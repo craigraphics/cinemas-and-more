@@ -3,15 +3,25 @@ const moment =  require('moment');
 export default {
   data() {
     return {
-      page: 1,
+      page:  Number(this.$route.params.pageNumber),
       movies: '',
       genres: '',
       path: this.$store.state.commonService.posterPath
     }
   },
-  methods: {
-    getMovies( page ) {
+  computed: {
 
+  },
+  methods: {
+    nextPage() {
+      this.page += 1;
+      this.$router.push({name: 'movies', params: { pageNumber: this.page }});
+    },
+    prevPage() {
+      (this.page <= 1)  ? this.page = 1 : this.page -= 1;
+      this.$router.push({name: 'movies', params: { pageNumber: this.page }});
+    },
+    getMovies( page ) {
       function getGenres() {
         let vm = this;
 
@@ -41,17 +51,11 @@ export default {
           .catch(vm.getError);
       }
 
-      if ( page === 'next' ) {
-        this.page = this.page += 1;
-      } else if ( page === 'prev' ) {
-        (this.page <= 1)  ? this.page = 1 : this.page -= 1;
-      }
-
       let listService =  this.$http.get(this.$store.state.commonService.api, { params: {
         type: 'movie',
         category: 'now_playing',
         api_key: this.$store.state.commonService.apiKey,
-        page: this.page
+        page: this.$route.params.pageNumber
       }, headers: this.$store.state.commonService.headers });
 
       let genresService =  this.$http.get(this.$store.state.commonService.api, { params: {
@@ -59,7 +63,6 @@ export default {
         category: 'movie',
         list: 'list',
         api_key: this.$store.state.commonService.apiKey,
-        page: this.page
       }, headers: this.$store.state.commonService.headers });
 
       listService
@@ -89,5 +92,10 @@ export default {
   },
   created () {
     this.getMovies();
+  },
+  watch: {
+    '$route' (to, from) {
+      this.getMovies();
+    }
   }
 }
