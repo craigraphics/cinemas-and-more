@@ -1,20 +1,20 @@
 @import '../../scss/variables';
 $space : 40px;
 $black: #000000;
+$card-height: 278px;
 
 .card {
-  float: left;
-  width: calc(50% - 40px);
+  height: $card-height;
   margin-bottom: $space;
   box-shadow: 0px 0px 15px;
-  margin-left: $space;
   box-sizing:border-box;
   position: relative;
+
   img {
     float: left;
     width: 185px;
     margin-right: 13px;
-    height: 278px;
+    height: $card-height;
     overflow: hidden;
   }
 }
@@ -22,6 +22,7 @@ $black: #000000;
 .caption {
   padding:0 $space/3 0;
   h4 {
+    padding-top: ($space/3);
     margin-bottom: ($space/3);
   }
   .top-text {
@@ -36,8 +37,8 @@ $black: #000000;
   float: left;
   margin-right: 13px;
   width: 185px;
-  height: 278px;
-  line-height: 278px;
+  height:  $card-height;
+  line-height:  $card-height;
   font-size: 92px;
   display: inline-block;
   font-family: FontAwesome;
@@ -51,7 +52,6 @@ $black: #000000;
 }
 
 .list-genres {
-
   margin:0;
   list-style: none;
   padding: 0;

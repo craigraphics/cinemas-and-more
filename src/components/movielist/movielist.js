@@ -9,9 +9,6 @@ export default {
       path: this.$store.state.commonService.posterPath
     }
   },
-  computed: {
-
-  },
   methods: {
     nextPage() {
       this.page += 1;
@@ -72,12 +69,6 @@ export default {
         .then( getGenres )
         .catch(this.getError)
     },
-    moment ( date ) {
-      return moment(date);
-    },
-    date ( date ) {
-      return moment(date).format('MMMM Do YYYY, h:mm:ss a');
-    },
     getError ( err ) {
       console.log(err);
     }
@@ -85,11 +76,6 @@ export default {
   computed: {
     evenNumbers () {
       return this.movies.results.filter( (number) =>  number % 2 === 0 );
-    }
-  },
-  filters: {
-    moment (date) {
-      return moment(date).format('MMMM Do YYYY');
     }
   },
   created () {

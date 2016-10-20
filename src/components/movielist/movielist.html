@@ -1,27 +1,28 @@
 <div class="movies">
-  <div class="clearfix">
-    <div class="card " v-for="(movie, index) in movies">
-      <img v-if="movie.poster_path" v-bind:src="path + movie.poster_path" v-bind:alt="movie.title + ' poster'">
-      <div v-if="!movie.poster_path" class="no_image_holder"></div>
-      <div class="caption ">
-        <h4>{{ movie.title | truncate(28, '...') }}</h4>
-        <section class="top-text">
-          <ul class="list-genres pull-left">
-            <li v-for="(gerne, num) in genres[index]"> {{gerne}}<span v-if="num < genres[index].length -1">, </span></li>
-          </ul>
-          <p class="pull-right rating"> {{movie.vote_average | currency}} / 10 <i class="fa fa-star" aria-hidden="true"></i> </p>
-        </section>
-        <p class="date">Release date: <strong>{{ movie.release_date | moment }}</strong> <i class="fa fa-calendar" aria-hidden="true"></i></p>
-        <p class="overview">{{ movie.overview | truncate(250, '...') }}</p>
+  <div class="row">
+    <template  v-for="(movie, index) in movies">
+      <div class="col-md-6">
+        <div class="card">
+          <img v-if="movie.poster_path" v-bind:src="path + movie.poster_path" v-bind:alt="movie.title + ' poster'">
+          <div v-if="!movie.poster_path" class="no_image_holder"></div>
+          <div class="caption ">
+            <h4>{{ movie.title | truncate(28, '...') }}</h4>
+            <section class="top-text">
+              <ul class="list-genres pull-left">
+                <li v-for="(gerne, num) in genres[index]"> {{gerne}}<span v-if="num < genres[index].length -1">, </span></li>
+              </ul>
+              <p class="pull-right rating"> {{movie.vote_average}} / 10 <i class="fa fa-star" aria-hidden="true"></i> </p>
+            </section>
+            <p class="date">Release date: <strong>{{ movie.release_date | dateformat }}</strong> <i class="fa fa-calendar" aria-hidden="true"></i></p>
+            <p class="overview">{{ movie.overview | truncate(250, '...') }}</p>
+          </div>
+          <router-link class="read-more" :to="{ name: 'id', params: { movieId: movie.id }}">Read more</router-link>
+        </div>
       </div>
-      <router-link class="read-more" :to="{ name: 'id', params: { movieId: movie.id }}">Read more</router-link>
-    </div>
-
-    <button class="btn btn-primary pull-left" v-on:click="prevPage()">Previous</button>
-    <button class="btn btn-primary pull-right" v-on:click="nextPage()">Next</button>
-
-    <div class="clearfix"></div>
-    <hr>
+    </template >
   </div>
 
+
+  <button class="btn btn-primary pull-left" v-on:click="prevPage()">Previous</button>
+  <button class="btn btn-primary pull-right" v-on:click="nextPage()">Next</button>
 </div>
