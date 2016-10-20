@@ -25,7 +25,7 @@
       getError ( err ) {
         window.alert(err);
       }
-    },
+    },    
     created () {
       this.getMovieId();
     }

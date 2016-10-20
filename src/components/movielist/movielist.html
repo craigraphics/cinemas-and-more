@@ -9,7 +9,7 @@
           <ul class="list-genres pull-left">
             <li v-for="(gerne, num) in genres[index]"> {{gerne}}<span v-if="num < genres[index].length -1">, </span></li>
           </ul>
-          <p class="pull-right rating"> {{movie.vote_average}} / 10 <i class="fa fa-star" aria-hidden="true"></i> </p>
+          <p class="pull-right rating"> {{movie.vote_average | currency}} / 10 <i class="fa fa-star" aria-hidden="true"></i> </p>
         </section>
         <p class="date">Release date: <strong>{{ movie.release_date | moment }}</strong> <i class="fa fa-calendar" aria-hidden="true"></i></p>
         <p class="overview">{{ movie.overview | truncate(250, '...') }}</p>

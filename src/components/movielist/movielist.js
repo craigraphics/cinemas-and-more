@@ -15,10 +15,12 @@ export default {
   methods: {
     nextPage() {
       this.page += 1;
+      this.$store.state.page = this.page;
       this.$router.push({name: 'movies', params: { pageNumber: this.page }});
     },
     prevPage() {
       (this.page <= 1)  ? this.page = 1 : this.page -= 1;
+      this.$store.state.page = this.page;
       this.$router.push({name: 'movies', params: { pageNumber: this.page }});
     },
     getMovies( page ) {

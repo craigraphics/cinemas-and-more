@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 const state = {
   count: 0,
+  page: 1,
   appTitle: 'Movies & More',
   appVersion: '0.0.1',
   commonService: {

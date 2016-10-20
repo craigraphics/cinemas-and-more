@@ -6,10 +6,12 @@ import Vue from 'vue'
 import VueResource from 'vue-resource'
 import VueTranslate from 'vue-translate-plugin'
 import vueTruncate from 'vue-truncate-filter'
+import vueCurrency from './filters/vue-currency-filter'
 
 Vue.use(VueResource)
 Vue.use(VueTranslate)
 Vue.use(vueTruncate)
+Vue.use(vueCurrency)
 
 import store from './store'
 import router from './router'
@@ -29,7 +31,7 @@ new Vue({
   store,
   el: '#app',
   http: {
-    root: '/root'    
+    root: '/root'
   },
   render: h => h(App)
 })
