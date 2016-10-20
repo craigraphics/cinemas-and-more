@@ -1,0 +1,29 @@
+<div>
+  <div class="row">
+    <div class="col-sm-4">
+      <img v-if="movie.poster_path" v-bind:src="path + movie.poster_path" v-bind:alt="movie.title + ' poster'">
+    </div>
+    <div class="col-sm-8">
+      <h1> {{movie.title}}  <span> {{movie.release_date}} </span></h1>
+      <h4>{{movie.tagline}}</h4>
+      <h3>Overview</h3>
+      <p>{{movie.overview}}</p>
+      <p>budget: {{movie.budget}}</p>
+      <ul class="list-inline">
+        <li  v-for="(gerne, num) in movie.genres">  {{ gerne.name }}<span v-if="num < movie.genres.length -1">, </span></li>
+      </ul>
+      <p>popularity: {{movie.popularity}}</p>
+      <p>runtime: {{movie.runtime}} mins</p>
+      <p>vote: {{movie.vote_average}}</p>
+      <ul class="list-inline">
+        <li  v-for="(language, num) in movie.spoken_languages">  {{ language.name }}<span v-if="num < movie.spoken_languages.length -1">, </span></li>
+      </ul>
+      <ul class="list-inline">
+        <li  v-for="(country, num) in movie.production_countries">  {{ country.name }}<span v-if="num < movie.production_countries.length -1">, </span></li>
+      </ul>
+    </div>
+  </div>
+  <router-link :to="{ name: 'movies'}" class="nav-item nav-link"> Back </router-link>
+   <!-- <pre> {{movie}}</pre>  -->
+</div>
+release_date

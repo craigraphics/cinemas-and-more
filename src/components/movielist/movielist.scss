@@ -1,0 +1,80 @@
+@import '../../scss/variables';
+$space : 40px;
+$black: #000000;
+
+.card {
+  float: left;
+  width: calc(50% - 40px);
+  margin-bottom: $space;
+  box-shadow: 0px 0px 15px;
+  margin-left: $space;
+  box-sizing:border-box;
+  position: relative;
+  img {
+    float: left;
+    width: 185px;
+    margin-right: 13px;
+    height: 278px;
+    overflow: hidden;
+  }
+}
+
+.caption {
+  padding:0 $space/3 0;
+  h4 {
+    margin-bottom: ($space/3);
+  }
+  .top-text {
+    overflow: hidden;
+    p {
+      margin: 0
+    }
+  }
+}
+
+.no_image_holder {
+  float: left;
+  margin-right: 13px;
+  width: 185px;
+  height: 278px;
+  line-height: 278px;
+  font-size: 92px;
+  display: inline-block;
+  font-family: FontAwesome;
+  text-align: center;
+  background-color: #dbdbdb;
+  color: #b5b5b5;
+  box-sizing: border-box;
+  &:before {
+    content: "\f1c5";
+  }
+}
+
+.list-genres {
+
+  margin:0;
+  list-style: none;
+  padding: 0;
+  li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    margin-right: 3px;
+  }
+}
+
+.rating {
+  i {
+    color: $black;
+  }
+}
+.overview {
+  margin-top: $space/3;
+  font-size: 1.5rem;
+  line-height: 1.4
+}
+.read-more {
+  position: absolute;
+  bottom: $space/3;
+  right: $space/3;
+}
