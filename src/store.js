@@ -6,7 +6,7 @@ Vue.use(Vuex)
 const state = {
   count: 0,
   page: 1,
-  appTitle: 'Movies & More',
+  appTitle: 'Cinemas & More',
   appVersion: '0.0.1',
   commonService: {
     apiKey: 'c721512e7f5e55a1136022cdfd1e1314',

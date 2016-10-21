@@ -1,7 +1,16 @@
 @import '../../scss/variables';
-$space : 40px;
-$black: #000000;
-$card-height: 278px;
+@import '../../scss/brand-variables';
+
+.movies {
+  padding: $space 0 ($space*3) 0;
+  background-color: $movie-list-background;
+}
+
+h3 {
+  color: $movie-background;
+  font-weight: 500;
+  margin-bottom: $space/2;
+}
 
 .card {
   height: $card-height;
@@ -9,7 +18,7 @@ $card-height: 278px;
   box-shadow: 0px 0px 15px;
   box-sizing:border-box;
   position: relative;
-
+  background-color: $white;
   img {
     float: left;
     width: 185px;

@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="container hello">
     <div class="well">
       <h1 class="text-center" v-translate>Hello movie buff!</h1>
       <div class="row text-center">
@@ -14,7 +14,7 @@
     <h4 v-translate>About this site</h4>
     <p v-translate>The {{$store.state.appTitle}} is a very small project created in 2016 to help the media center community serve the movies now playing in theaters.</p>
     <router-link
-      :to="{ name: 'movies', params: { lang: $store.state.commonService.lang, pageNumber: 1 }}"
+      :to="{ name: 'nowplaying', params: { lang: $store.state.commonService.lang, pageNumber: 1 }}"
       class="btn lg btn-success">
       <span v-translate>Take me to the movie list!</span>
     </router-link>
@@ -31,6 +31,10 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '../scss/brand-variables';
+  .container {
+    padding: $space 0 ($space*4) 0;
+  }
   h1 {
     color: #42b983;
   }

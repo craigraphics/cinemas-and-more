@@ -5,7 +5,8 @@ export default {
       lang: this.$route.params.lang,
       movies: '',
       genres: '',
-      path: this.$store.state.commonService.posterPath
+      path: this.$store.state.commonService.posterPath,
+      pageTitle: 'Top Rated'
     }
   },
   methods: {
@@ -13,13 +14,13 @@ export default {
       this.lang = this.$store.state.commonService.lang;
       this.page += 1;
       this.$store.state.page = this.page;
-      this.$router.push({name: 'movies', params: { lang: this.lang, pageNumber: this.page }});
+      this.$router.push({name: 'toprated', params: { lang: this.lang, pageNumber: this.page }});
     },
     prevPage() {
       this.lang = this.$store.state.commonService.lang;
       (this.page <= 1)  ? this.page = 1 : this.page -= 1;
       this.$store.state.page = this.page;
-      this.$router.push({name: 'movies', params: { lang: this.lang, pageNumber: this.page }});
+      this.$router.push({name: 'toprated', params: { lang: this.lang, pageNumber: this.page }});
     },
     getMovies( page ) {
       function getGenres() {
@@ -43,6 +44,7 @@ export default {
 
           vm.$nextTick(function () {
             vm.genres = tempArr;
+            // vm.movies.pageTitle = 'Top Rated';
           });
         }
 
@@ -53,7 +55,7 @@ export default {
 
       let listService =  this.$http.get(this.$store.state.commonService.api, { params: {
         type: 'movie',
-        category: 'now_playing',
+        category: 'top_rated',
         api_key: this.$store.state.commonService.apiKey,
         language: this.$route.params.lang,
         page: this.$route.params.pageNumber

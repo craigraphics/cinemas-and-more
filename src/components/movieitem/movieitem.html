@@ -1,0 +1,62 @@
+<section  class="movie">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <img
+          v-if="movie.poster_path"
+          v-bind:src="path + movie.poster_path"
+          v-bind:alt="movie.title + ' poster'"
+          class="img-responsive">
+      </div>
+      <div class="col-md-8">
+        <h3 class="movie-title">
+          {{movie.title}}
+          <small> ({{movie.release_date | dateformat('YYYY')}}) </small>
+          <small class="label label-warning">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            {{movie.vote_average}}
+          </small>
+        </h3>
+        <hr>
+        <dl class="dl-horizontal">
+          <dt class="tagline" v-if="movie.tagline">Tagline:</dt>
+          <dd class="tagline" v-if="movie.tagline">{{movie.tagline}}</dd>
+          <dt v-if="movie.overview">Overview:</dt>
+          <dd v-if="movie.overview">{{movie.overview}}</dd>
+          <dt v-if="movie.runtime">Runtime:</dt>
+          <dd v-if="movie.runtime">{{movie.runtime}} mins</dd>
+          <dt v-if="movie.budget">Budget:</dt>
+          <dd v-if="movie.budget">${{movie.budget | currency}}</dd>
+          <dt>Genre(s):</dt>
+          <dd>
+            <ul class="list-inline">
+              <li  v-for="(gerne, num) in movie.genres">  {{ gerne.name }}<span v-if="num < movie.genres.length -1">, </span></li>
+            </ul>
+          </dd>
+          <dt v-if="movie.popularity">Popularity:</dt>
+          <dd v-if="movie.popularity">{{movie.popularity}}</dd>
+          <dt>Language(s):</dt>
+          <dd>
+            <ul class="list-inline">
+              <li v-for="(language, num) in movie.spoken_languages">  {{ language.name }}<span v-if="num < movie.spoken_languages.length -1">, </span></li>
+            </ul>
+          </dd>
+          <dt>Countries:</dt>
+          <dd>
+            <ul class="list-inline">
+              <li v-for="(country, num) in movie.production_countries">  {{ country.name }}<span v-if="num < movie.production_countries.length -1">, </span></li>
+            </ul>
+          </dd>
+          <dt>
+            <button class="btn btn-link" @click="getBack()"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></button>
+
+          </dt>
+          <dd></dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+
+   <!-- <pre> {{movie}}</pre>  -->
+</section>

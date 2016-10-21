@@ -1,0 +1,58 @@
+@import '../../scss/variables';
+@import '../../scss/brand-variables';
+
+ul {
+  margin-bottom: 0;
+}
+
+img {
+  width:100%;
+}
+
+.movie {
+  padding: $space*2 0 ($space*3) 0;
+  background-color: $movie-background;
+  color: white;
+}
+
+.movie-title {
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-weight: 800;
+  small {
+    position: relative;
+    top: -2px;
+    color: lighten($brand-color, 10%)
+  }
+  .label {
+    top: -5px;
+    left: 5px;
+    color: #c2c9c2;
+    font-size: 13px;
+    background-color: #666;
+    .fa-star {
+      font-size:12px;
+    }
+  }
+}
+
+.dl-horizontal  {
+  margin-top: $space/2;
+  dt, dd {
+    line-height: $font-size-base* 1.7;
+    margin-bottom: 5px;
+  }
+
+}
+
+.tagline {
+  font-size: $font-size-base*1.8;
+}
+
+
+
+hr {
+  margin: 7px 0;
+  border-top:  2px solid $brand-color;
+}

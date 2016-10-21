@@ -13,14 +13,13 @@
   import myMovieMixin from '../mixins/vue-mixins';
   export default {
     locales: require('../i18n/Footer.js'),
-    mixins:[myMovieMixin]    
+    mixins:[myMovieMixin]
   }
 </script>
 
 <style lang="scss" scoped>
-  $black: #000000;
+  
   footer {
-    margin-top: 100px;
     background-color:  #222 ;
     padding: 20px 50px 100px;
     color: #FFF;
