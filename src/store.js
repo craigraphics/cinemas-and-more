@@ -10,6 +10,7 @@ const state = {
   appVersion: '0.0.1',
   commonService: {
     apiKey: 'c721512e7f5e55a1136022cdfd1e1314',
+    lang: 'en-US',
     api: 'https://api.themoviedb.org/3{/type}{/category}{/list}',
     get params () { params: { api_key: this.apiKey } },
     headers: { 'Accept-Language': 'en-US' },

@@ -4,6 +4,7 @@ export default {
   data() {
     return {
       page:  Number(this.$route.params.pageNumber),
+      lang: this.$route.params.lang,
       movies: '',
       genres: '',
       path: this.$store.state.commonService.posterPath
@@ -11,14 +12,16 @@ export default {
   },
   methods: {
     nextPage() {
+      this.lang = this.$store.state.commonService.lang;
       this.page += 1;
       this.$store.state.page = this.page;
-      this.$router.push({name: 'movies', params: { pageNumber: this.page }});
+      this.$router.push({name: 'movies', params: { lang: this.lang, pageNumber: this.page }});
     },
     prevPage() {
+      this.lang = this.$store.state.commonService.lang;
       (this.page <= 1)  ? this.page = 1 : this.page -= 1;
       this.$store.state.page = this.page;
-      this.$router.push({name: 'movies', params: { pageNumber: this.page }});
+      this.$router.push({name: 'movies', params: { lang: this.lang, pageNumber: this.page }});
     },
     getMovies( page ) {
       function getGenres() {
@@ -54,6 +57,7 @@ export default {
         type: 'movie',
         category: 'now_playing',
         api_key: this.$store.state.commonService.apiKey,
+        language: this.$route.params.lang,
         page: this.$route.params.pageNumber
       }, headers: this.$store.state.commonService.headers });
 

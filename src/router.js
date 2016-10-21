@@ -13,7 +13,7 @@ export default new Router({
   mode: 'hash',
   routes: [
     { name: 'home', path: '/', component: Hello },
-    { name: 'movies', path: '/Movies/page/:pageNumber', component: Movielist },
+    { name: 'movies', path: '/Movies/lang/:lang/page/:pageNumber/', component: Movielist },
     { name: 'id', path: '/id/:movieId', component: Item }
   ]
 });

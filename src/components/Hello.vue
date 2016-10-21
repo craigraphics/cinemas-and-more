@@ -9,13 +9,11 @@
       </div>
     </div>
 
-    <h3> Welcome to the {{$store.state.appTitle}} </h3>
+    <h3> <span v-translate>Welcome to the</span>  {{$store.state.appTitle}} </h3>
     <hr />
-    <h4>About this site</h4>
-    <p>
-      The {{$store.state.appTitle}} is a very small project created in 2016 to help the media center community serve the movies now playing in theaters.
-    </p>
-    <router-link :to="{ name: 'movies', params: { pageNumber: 1 }}" class="btn btn-lg btn-primary"> Take me to the movie list! </router-link>
+    <h4 v-translate>About this site</h4>
+    <p v-translate>The {{$store.state.appTitle}} is a very small project created in 2016 to help the media center community serve the movies now playing in theaters.</p>
+    <router-link :to="{ name: 'movies', params: { lang: $store.state.commonService.lang, pageNumber: 1 }}" class="btn lg btn-success"><span v-translate>Take me to the movie list!</span></router-link>
   </div>
 </template>
 
@@ -25,7 +23,6 @@
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
   h1 {
     color: #42b983;
