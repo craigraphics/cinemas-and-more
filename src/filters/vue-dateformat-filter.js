@@ -15,7 +15,7 @@
      *
      */
 
-    Vue.filter('dateformat', function (date, format = 'MMMM Do YYYY') {
+    Vue.filter('dateformat', function (date, format = 'MMM DD, YYYY') {
       return moment(date).format(format);
       // return '';
 	  })

@@ -1,5 +1,3 @@
-const moment =  require('moment');
-
 export default {
   data() {
     return {
@@ -82,6 +80,7 @@ export default {
       return this.movies.results.filter( (number) =>  number % 2 === 0 );
     }
   },
+  locales: require('../../i18n/Movielist.js'),
   created () {
     this.getMovies();
   },

@@ -21,6 +21,11 @@ $card-height: 278px;
 
 .caption {
   padding:0 $space/3 0;
+  a:not(.read-more) {
+    &:hover {
+      text-decoration: none;
+    }
+  }
   h4 {
     padding-top: ($space/3);
     margin-bottom: ($space/3);
@@ -77,4 +82,12 @@ $card-height: 278px;
   position: absolute;
   bottom: $space/3;
   right: $space/3;
+}
+
+.pagination {
+  float:right;
+  margin: 0;
+  .btn-link:focus {
+    outline:0;
+  }
 }

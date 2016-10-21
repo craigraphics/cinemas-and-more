@@ -1,28 +1,55 @@
 <div>
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-md-4">
       <img v-if="movie.poster_path" v-bind:src="path + movie.poster_path" v-bind:alt="movie.title + ' poster'">
     </div>
-    <div class="col-sm-8">
-      <h1> {{movie.title}}  <span> {{movie.release_date}} </span></h1>
-      <h4>{{movie.tagline}}</h4>
-      <h3>Overview</h3>
-      <p>{{movie.overview}}</p>
-      <p>budget: ${{movie.budget | currency}}</p>
-      <ul class="list-inline">
-        <li  v-for="(gerne, num) in movie.genres">  {{ gerne.name }}<span v-if="num < movie.genres.length -1">, </span></li>
-      </ul>
-      <p>popularity: {{movie.popularity}}</p>
-      <p>runtime: {{movie.runtime}} mins</p>
-      <p>vote: {{movie.vote_average}}</p>
-      <ul class="list-inline">
-        <li  v-for="(language, num) in movie.spoken_languages">  {{ language.name }}<span v-if="num < movie.spoken_languages.length -1">, </span></li>
-      </ul>
-      <ul class="list-inline">
-        <li  v-for="(country, num) in movie.production_countries">  {{ country.name }}<span v-if="num < movie.production_countries.length -1">, </span></li>
-      </ul>
+    <div class="col-md-6">
+      <h2> {{movie.title}}  <span> ({{movie.release_date | dateformat('YYYY')}}) </span></h2>
+      <hr>
+      <dl class="dl-horizontal">
+        <dt>Tagline:</dt>
+        <dd>{{movie.tagline}}</dd>
+        <dt>Overview:</dt>
+        <dd>{{movie.overview}}</dd>
+        <dt>Runtime:</dt>
+        <dd>{{movie.runtime}} mins</dd>
+        <dt>Budget:</dt>
+        <dd>${{movie.budget | currency}}</dd>
+        <dt>Genre(s):</dt>
+        <dd>
+          <ul class="list-inline">
+            <li  v-for="(gerne, num) in movie.genres">  {{ gerne.name }}<span v-if="num < movie.genres.length -1">, </span></li>
+          </ul>
+        </dd>
+        <dt>Popularity:</dt>
+        <dd>{{movie.popularity}}</dd>
+        <dt>Vote:</dt>
+        <dd>{{movie.vote_average}} / 10 <i class="fa fa-star" aria-hidden="true"></i></dd>
+        <dt>Language(s):</dt>
+        <dd>
+          <ul class="list-inline">
+            <li  v-for="(language, num) in movie.spoken_languages">  {{ language.name }}<span v-if="num < movie.spoken_languages.length -1">, </span></li>
+          </ul>
+        </dd>
+        <dt>Countries:</dt>
+        <dd>
+          <ul class="list-inline">
+            <li  v-for="(country, num) in movie.production_countries">  {{ country.name }}<span v-if="num < movie.production_countries.length -1">, </span></li>
+          </ul>
+        </dd>
+        <dt>
+          <router-link
+            :to="{ name: 'movies', params: { lang: $store.state.commonService.lang, pageNumber: $store.state.page }}"
+            class="btn btn-link">
+            <i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i>
+          </router-link>
+        </dt>
+        <dd></dd>
+      </dl>
+
+
     </div>
   </div>
-  <router-link :to="{ name: 'movies', params: { pageNumber: $store.state.page }}" class="nav-item nav-link"> Back </router-link>
+
    <!-- <pre> {{movie}}</pre>  -->
 </div>

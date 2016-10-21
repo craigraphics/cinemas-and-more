@@ -1,6 +1,8 @@
 <div class="movies">
+  <h3>Noy playing</h3>
   <div class="row">
     <template  v-for="(movie, index) in movies">
+
       <div class="col-md-6">
         <div class="card">
           <router-link :to="{ name: 'id', params: { movieId: movie.id }}">
@@ -18,16 +20,18 @@
               </ul>
               <p class="pull-right rating"> {{movie.vote_average}} / 10 <i class="fa fa-star" aria-hidden="true"></i> </p>
             </section>
-            <p class="date">Release date: <strong>{{ movie.release_date | dateformat }}</strong> <i class="fa fa-calendar" aria-hidden="true"></i></p>
+            <p class="date"> <span v-translate>Release date:</span> <strong>{{ movie.release_date | dateformat }}</strong> <i class="fa fa-calendar" aria-hidden="true"></i></p>
             <p class="overview">{{ movie.overview | truncate(250, '...') }}</p>
           </div>
-          <router-link class="read-more" :to="{ name: 'id', params: { movieId: movie.id }}">Read more</router-link>
+          <router-link class="read-more" :to="{ name: 'id', params: { movieId: movie.id }}"><span v-translate>Read more<span></router-link>
         </div>
       </div>
     </template >
   </div>
 
+  <nav class="pagination">
+    <button class="btn btn-link pull-left" v-on:click="prevPage()"><i class="fa fa-arrow-circle-left fa-3x" aria-hidden="true"></i></button>
+    <button class="btn btn-link pull-right" v-on:click="nextPage()"><i class="fa fa-arrow-circle-right fa-3x" aria-hidden="true"></i></button>
+  </nav>
 
-  <button class="btn btn-link pull-left" v-on:click="prevPage()"><i class="fa fa-arrow-circle-left fa-3x" aria-hidden="true"></i></button>
-  <button class="btn btn-link pull-right" v-on:click="nextPage()"><i class="fa fa-arrow-circle-right fa-3x" aria-hidden="true"></i></button>
 </div>
