@@ -18,9 +18,9 @@
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><router-link :to="{ name: 'home'}" class="nav-item nav-link" v-translate> Home </router-link></li>
-          <li><router-link :to="{ name: 'nowplaying', params: { lang: $store.state.commonService.lang, pageNumber: 1 }}" class="nav-item nav-link" v-translate> Now Playing </router-link></li>
-          <li><router-link :to="{ name: 'toprated', params: { lang: $store.state.commonService.lang, pageNumber: 1 }}" class="nav-item nav-link" v-translate> Top Rated </router-link></li>
+          <li><router-link :to="{ name: 'home'}" class="nav-item nav-link" v-translate>{{t('Home')}}</router-link></li>
+          <li><router-link :to="{ name: 'movielists', params: {cat: 'nowplaying', lang: $store.state.commonService.lang, pageNumber: 1 }}" class="nav-item nav-link" v-translate>{{t('Now Playing')}}</router-link></li>
+          <li><router-link :to="{ name: 'movielists', params: {cat: 'toprated', lang: $store.state.commonService.lang, pageNumber: 1 }}" class="nav-item nav-link" v-translate>{{t('Top Rated')}}</router-link></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

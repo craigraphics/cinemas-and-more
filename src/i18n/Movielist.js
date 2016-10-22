@@ -1,6 +1,7 @@
 module.exports = {
   es: {
-    "Now playing": "Lanzamientos", 
+    "Now Playing": "Lanzamientos",
+    "Top Rated": "Mejor calificados",
     "Release date:": "Fecha de lanzamiento",
     "Read more": "Leer más"
   }

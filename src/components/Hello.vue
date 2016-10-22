@@ -14,7 +14,7 @@
     <h4 v-translate>About this site</h4>
     <p v-translate>The {{$store.state.appTitle}} is a very small project created in 2016 to help the media center community serve the movies now playing in theaters.</p>
     <router-link
-      :to="{ name: 'nowplaying', params: { lang: $store.state.commonService.lang, pageNumber: 1 }}"
+      :to="{ name: 'movielists', params: {cat: 'nowplaying', lang: $store.state.commonService.lang, pageNumber: 1 }}"
       class="btn lg btn-success">
       <span v-translate>Take me to the movie list!</span>
     </router-link>
@@ -23,7 +23,6 @@
 
 <script>
   import myMovieMixin from '../mixins/vue-mixins';
-
   export default {
     locales: require('../i18n/Hello.js'),
     mixins:[myMovieMixin]

@@ -16,7 +16,11 @@ const state = {
     headers: { 'Accept-Language': 'en-US' },
     posterPath: 'https://image.tmdb.org/t/p/w185_and_h278_bestv2',
     bigPosterPath: 'https://image.tmdb.org/t/p/w300_and_h450_bestv2/'
-  }
+  },
+  cats: [
+    {name: 'nowplaying', cat: 'now_playing', pageTitle: 'Now Playing'},
+    {name: 'toprated', cat: 'top_rated', pageTitle: 'Top Rated'}
+  ]
 }
 
 const mutations = {

@@ -1,3 +1,4 @@
+import myMovieMixin from '../../mixins/vue-mixins';
 export default {
   data() {
     return {
@@ -6,27 +7,29 @@ export default {
       movies: '',
       genres: '',
       path: this.$store.state.commonService.posterPath,
-      pageTitle: 'Top Rated'
+      pageTitle: this.$route.params.cat
     }
   },
+  mixins:[myMovieMixin],
   methods: {
     nextPage() {
       this.lang = this.$store.state.commonService.lang;
       this.page += 1;
       this.$store.state.page = this.page;
-      this.$router.push({name: 'toprated', params: { lang: this.lang, pageNumber: this.page }});
+      this.$router.push({name: 'movielists', params: {cat:this.$route.params.cat, lang: this.lang, pageNumber: this.page }});
     },
     prevPage() {
       this.lang = this.$store.state.commonService.lang;
       (this.page <= 1)  ? this.page = 1 : this.page -= 1;
       this.$store.state.page = this.page;
-      this.$router.push({name: 'toprated', params: { lang: this.lang, pageNumber: this.page }});
+      this.$router.push({name: 'movielists', params: {cat:this.$route.params.cat, lang: this.lang, pageNumber: this.page }});
     },
-    getMovies( page ) {
+    getMovies(page) {
       function getGenres() {
         let vm = this;
+        vm.pageTitle = vm.getCategory(this.$route.params.cat).pageTitle;
 
-        function arrangeGenres ( data ) {
+        function arrangeGenres (data) {
           let genreArr = data.body.genres;
           let tempArr = [];
 
@@ -44,7 +47,7 @@ export default {
 
           vm.$nextTick(function () {
             vm.genres = tempArr;
-            // vm.movies.pageTitle = 'Top Rated';
+            vm.pageTitle = vm.getCategory(this.$route.params.cat).pageTitle;
           });
         }
 
@@ -55,7 +58,7 @@ export default {
 
       let listService =  this.$http.get(this.$store.state.commonService.api, { params: {
         type: 'movie',
-        category: 'top_rated',
+        category: this.getCategory(this.$route.params.cat).cat,
         api_key: this.$store.state.commonService.apiKey,
         language: this.$route.params.lang,
         page: this.$route.params.pageNumber
@@ -69,12 +72,12 @@ export default {
       }, headers: this.$store.state.commonService.headers });
 
       listService
-        .then( ( data ) => this.movies = data.body.results )
-        .then( getGenres )
+        .then((data) => this.movies = data.body.results )
+        .then(getGenres)
         .catch(this.getError)
     },
-    getError ( err ) {
-      console.log(err);
+    getError(err) {
+      console.log(err.statusText);
     }
   },
   computed: {

@@ -7,7 +7,7 @@ export default {
   },
   methods: {
     getBack () {
-      this.$route.go(window.history.back());
+      this.$router.go(window.history.back());
     },
     getMovieId () {
       let movieService =  this.$http.get(this.$store.state.commonService.api, { params: {
