@@ -41,17 +41,15 @@
 @import '../../scss/brand-variables';
 
 .card {
-  height: $card-height;
   margin-bottom: $space;
   box-shadow: 0px 0px 15px;
   box-sizing:border-box;
   position: relative;
   background-color: $white;
   img {
-    float: left;
-    width: 185px;
     margin-right: 13px;
-    height: $card-height;
+    width: 100%;
+    height: auto;
     overflow: hidden;
   }
 }
@@ -68,6 +66,7 @@
     margin-bottom: ($space/3);
   }
   .top-text {
+    display: none;
     overflow: hidden;
     p {
       margin: 0
@@ -110,15 +109,42 @@
     color: $black;
   }
 }
+
 .overview {
+  display: none;
   margin-top: $space/3;
   font-size: 1.5rem;
   line-height: 1.4
 }
+
+.date {
+  padding-bottom: 15px;
+}
+
 .read-more {
+  display: none;
   position: absolute;
   bottom: $space/3;
   right: $space/3;
+}
+
+@media (min-width: $screen-sm-min) {
+  .card {
+      height: $card-height;
+
+    img {
+      float: left;
+      width: 185px;
+        height: $card-height;
+    }
+  }
+  .overview, .read-more, .caption .top-text {
+    display: block;
+  }
+
+  .date {
+    padding-bottom: 0;
+  }
 }
 
 

@@ -1,5 +1,6 @@
 import myMovieMixin from '../../mixins/vue-mixins';
 import Card from './card'
+require('match-media');
 
 export default {
   data() {
@@ -30,7 +31,12 @@ export default {
     getMovies(page) {
       function getGenres() {
         let vm = this;
+
         vm.pageTitle = vm.getCategory(this.$route.params.cat).pageTitle;
+
+        if (matchMedia('only screen and (max-width: 480px)').matches) {
+          vm.path = this.$store.state.commonService.smallWidePosterPath;          
+        }
 
         function arrangeGenres (data) {
           let genreArr = data.body.genres;

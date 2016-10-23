@@ -13,6 +13,7 @@ export default {
       let movieService =  this.$http.get(this.$store.state.commonService.api, { params: {
         type: 'movie',
         category: this.$route.params.movieId,
+        language: this.$route.params.lang,
         api_key: this.$store.state.commonService.apiKey,
       }, headers: this.$store.state.commonService.headers });
 
@@ -26,5 +27,11 @@ export default {
   },
   created () {
     this.getMovieId();
+  },
+  locales: require('../../i18n/Movieitiem.js'),
+  watch: {
+    '$route' (to, from) {
+      this.getMovieId();
+    }
   }
 }

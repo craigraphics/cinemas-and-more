@@ -17,6 +17,7 @@
     "dateformat": "^1.0.12",
     "font-awesome": "^4.6.3",
     "jquery": "^3.1.1",
+    "match-media": "^0.2.0",
     "moment": "^2.15.1",
     "vue": "^2.0.1",
     "vue-resource": "^1.0.3",

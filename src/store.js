@@ -14,7 +14,8 @@ const state = {
     api: 'https://api.themoviedb.org/3{/type}{/category}{/list}',
     get params () { params: { api_key: this.apiKey } },
     headers: { 'Accept-Language': 'en-US' },
-    posterPath: 'https://image.tmdb.org/t/p/w185_and_h278_bestv2',
+    smallWidePosterPath: 'https://image.tmdb.org/t/p/w320_and_h180_bestv2',
+    posterPath: 'https://image.tmdb.org/t/p/w185',
     bigPosterPath: 'https://image.tmdb.org/t/p/w300_and_h450_bestv2/'
   },
   cats: [

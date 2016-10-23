@@ -19,29 +19,28 @@
         </h3>
         <hr>
         <dl class="dl-horizontal">
-          <dt class="tagline" v-if="movie.tagline">Tagline:</dt>
+          <dt class="tagline" v-if="movie.tagline">{{t('Tagline:')}}</dt>
           <dd class="tagline" v-if="movie.tagline">{{movie.tagline}}</dd>
-          <dt v-if="movie.overview">Overview:</dt>
+          <dt v-if="movie.overview">{{t('Overview:')}}</dt>
           <dd v-if="movie.overview">{{movie.overview}}</dd>
-          <dt v-if="movie.runtime">Runtime:</dt>
+          <dt v-if="movie.runtime">{{t('Runtime:')}}</dt>
           <dd v-if="movie.runtime">{{movie.runtime}} mins</dd>
-          <dt v-if="movie.budget">Budget:</dt>
+          <dt v-if="movie.budget">{{t('Budget:')}}</dt>
           <dd v-if="movie.budget">${{movie.budget | currency}}</dd>
-          <dt>Genre(s):</dt>
+          <dt>{{t('Genre(s):')}}</dt>
           <dd>
             <ul class="list-inline">
               <li  v-for="(gerne, num) in movie.genres">  {{ gerne.name }}<span v-if="num < movie.genres.length -1">, </span></li>
             </ul>
           </dd>
-          <dt v-if="movie.popularity">Popularity:</dt>
-          <dd v-if="movie.popularity">{{movie.popularity}}</dd>
-          <dt>Language(s):</dt>
+
+          <dt>{{t('Language(s):')}}</dt>
           <dd>
             <ul class="list-inline">
               <li v-for="(language, num) in movie.spoken_languages">  {{ language.name }}<span v-if="num < movie.spoken_languages.length -1">, </span></li>
             </ul>
           </dd>
-          <dt>Countries:</dt>
+          <dt>{{t('Country(ies):')}}</dt>
           <dd>
             <ul class="list-inline">
               <li v-for="(country, num) in movie.production_countries">  {{ country.name }}<span v-if="num < movie.production_countries.length -1">, </span></li>
