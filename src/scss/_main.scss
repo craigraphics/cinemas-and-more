@@ -1,7 +1,23 @@
 @import '../scss/brand-variables';
 
+body {
+  background-color:$movie-list-background;
+}
+
+button:focus {
+    outline:none;
+}
+
 .navbar {
   background-color:$navbar-bg-color;
   margin-bottom: 0;
   border-radius: 0;
+}
+
+.btn-link, a {
+  color: $brand-color;
+  &:hover, &:focus {
+    outline:none;
+    color: darken($brand-color, 20%);
+  }
 }

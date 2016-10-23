@@ -3,33 +3,9 @@
     <h3>{{t(pageTitle)}}</h3>
     <div class="row">
       <template v-for="(movie, index) in movies">
-
-        <div class="col-md-6">
-          <div class="card">
-            <router-link :to="{ name: 'id', params: { movieId: movie.id }}">
-              <img v-if="movie.poster_path" v-bind:src="path + movie.poster_path" v-bind:alt="movie.title + ' poster'">
-              <div v-if="!movie.poster_path" class="no_image_holder"></div>
-            </router-link>
-
-            <div class="caption ">
-              <router-link :to="{ name: 'id', params: { movieId: movie.id }}">
-                <h4>{{ movie.title | truncate(28, '...') }}</h4>
-              </router-link>
-              <section class="top-text">
-                <ul class="list-genres pull-left">
-                  <li v-for="(gerne, num) in genres[index]"> {{gerne}}<span v-if="num < genres[index].length -1">, </span></li>
-                </ul>
-                <p class="pull-right rating"> {{movie.vote_average}} / 10 <i class="fa fa-star" aria-hidden="true"></i> </p>
-              </section>
-              <p class="date"> <span v-translate>Release date:</span> <strong>{{ movie.release_date | dateformat }}</strong> <i class="fa fa-calendar" aria-hidden="true"></i></p>
-              <p class="overview">{{ movie.overview | truncate(250, '...') }}</p>
-            </div>
-            <router-link class="read-more" :to="{ name: 'id', params: { movieId: movie.id }}"><span v-translate>Read more<span></router-link>
-          </div>
-        </div>
+        <card v-bind:film="movie" v-bind:path="path" v-bind:genres="genres" v-bind:index="index"></card>
       </template >
     </div>
-
     <nav class="pagination">
       <button class="btn btn-link pull-left" v-on:click="prevPage()"><i class="fa fa-arrow-circle-left fa-3x" aria-hidden="true"></i></button>
       <button class="btn btn-link pull-right" v-on:click="nextPage()"><i class="fa fa-arrow-circle-right fa-3x" aria-hidden="true"></i></button>

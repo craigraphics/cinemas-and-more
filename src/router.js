@@ -14,6 +14,6 @@ export default new Router({
   routes: [
     { name: 'home', path: '/', component: Hello },
     { name: 'movielists', path: '/category/:cat/lang/:lang/page/:pageNumber/', component: Movielist },
-    { name: 'id', path: '/id/:movieId', component: Item }
+    { name: 'movie', path: '/lang/:lang/movie/:movieId', component: Item }
   ]
 });

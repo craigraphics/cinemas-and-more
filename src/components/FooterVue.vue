@@ -18,10 +18,14 @@
 </script>
 
 <style lang="scss" scoped>
-  
+
   footer {
     background-color:  #222 ;
     padding: 20px 50px 100px;
     color: #FFF;
+  }
+  .list-inline {
+    padding-left: 13px;
+    margin-bottom: 0;
   }
 </style>
