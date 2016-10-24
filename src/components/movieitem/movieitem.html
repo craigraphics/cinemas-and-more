@@ -21,12 +21,17 @@
         <dl class="dl-horizontal">
           <dt class="tagline" v-if="movie.tagline">{{t('Tagline:')}}</dt>
           <dd class="tagline" v-if="movie.tagline">{{movie.tagline}}</dd>
+          <dt v-if="credits.crew">{{t('Director:')}}</dt>
+          <dd v-if="credits.crew">{{director}}</dd>
+          <dt v-if="credits.crew">{{t('Producer:')}}</dt>
+          <dd v-if="credits.crew">{{producer}}</dd>
           <dt v-if="movie.overview">{{t('Overview:')}}</dt>
           <dd v-if="movie.overview">{{movie.overview}}</dd>
           <dt v-if="movie.runtime">{{t('Runtime:')}}</dt>
           <dd v-if="movie.runtime">{{movie.runtime}} mins</dd>
           <dt v-if="movie.budget">{{t('Budget:')}}</dt>
           <dd v-if="movie.budget">${{movie.budget | currency}}</dd>
+
           <dt>{{t('Genre(s):')}}</dt>
           <dd>
             <ul class="list-inline">
@@ -46,16 +51,20 @@
               <li v-for="(country, num) in movie.production_countries">  {{ country.name }}<span v-if="num < movie.production_countries.length -1">, </span></li>
             </ul>
           </dd>
+          <dt>{{t('Cast:')}}</dt>
+          <dd>
+            <ul class="list-inline">
+              <li v-for="(actor, num) in credits.cast" v-if="num < 10">  {{ actor.name }}<span v-if="num < 10 -1">, </span></li>
+            </ul>
+          </dd>
           <dt>
             <button class="btn btn-link" @click="getBack()"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></button>
-
           </dt>
           <dd></dd>
         </dl>
       </div>
     </div>
   </div>
-
 
    <!-- <pre> {{movie}}</pre>  -->
 </section>
