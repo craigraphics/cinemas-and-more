@@ -13,10 +13,14 @@ const state = {
     lang: 'en-US',
     api: 'https://api.themoviedb.org/3{/type}{/category}{/list}',
     get params () { params: { api_key: this.apiKey } },
-    headers: { 'Accept-Language': 'en-US' },
-    smallWidePosterPath: 'https://image.tmdb.org/t/p/w320_and_h180_bestv2',
-    posterPath: 'https://image.tmdb.org/t/p/w185',
-    bigPosterPath: 'https://image.tmdb.org/t/p/w300_and_h450_bestv2/'
+    headers: { 'Accept-Language': 'en-US' }
+  },
+  posterPath: {
+    url: 'https://image.tmdb.org/t/p/',
+    squared: 'w132_and_h132_bestv2/',
+    smallWide: 'w320_and_h180_bestv2/',
+    mediumVertical: 'w185_and_h278_bestv2/',
+    bigVertical: 'w300_and_h450_bestv2/'
   },
   cats: [
     {name: 'nowplaying', cat: 'now_playing', pageTitle: 'Now Playing'},

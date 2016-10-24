@@ -9,7 +9,7 @@ export default {
       lang: this.$route.params.lang,
       movies: '',
       genres: '',
-      path: this.$store.state.commonService.posterPath,
+      path: '',
       pageTitle: this.$route.params.cat
     }
   },
@@ -78,14 +78,16 @@ export default {
           this.pageTitle = this.getCategory(this.$route.params.cat).pageTitle;
 
           if (matchMedia('only screen and (max-width: 480px)').matches) {
-            vm.path = this.$store.state.commonService.smallWidePosterPath;
+            this.path = String(this.$store.state.posterPath.url) + String(this.$store.state.posterPath.smallWide);
+          } else {
+            this.path = String(this.$store.state.posterPath.url) +  String(this.$store.state.posterPath.mediumVertical);
           }
         })
         .then(this.setGenreNames)
         .catch(this.getError)
     },
     getError(err) {
-      console.log(err.statusText);
+      console.log(err);
     }
   },
   computed: {

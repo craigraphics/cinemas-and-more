@@ -6,7 +6,7 @@
           v-if="movie.poster_path"
           v-bind:src="path + movie.poster_path"
           v-bind:alt="movie.title + ' poster'"
-          class="img-responsive">
+          class="img-responsive poster">
       </div>
       <div class="col-md-8">
         <h3 class="movie-title">
@@ -21,10 +21,10 @@
         <dl class="dl-horizontal">
           <dt class="tagline" v-if="movie.tagline">{{t('Tagline:')}}</dt>
           <dd class="tagline" v-if="movie.tagline">{{movie.tagline}}</dd>
-          <dt v-if="credits.crew">{{t('Director:')}}</dt>
-          <dd v-if="credits.crew">{{director}}</dd>
-          <dt v-if="credits.crew">{{t('Producer:')}}</dt>
-          <dd v-if="credits.crew">{{producer}}</dd>
+          <dt v-if="director.length">{{t('Director:')}}</dt>
+          <dd v-if="director.length">{{director}}</dd>
+          <dt v-if="producer.length">{{t('Producer:')}}</dt>
+          <dd v-if="producer.length">{{producer}}</dd>
           <dt v-if="movie.overview">{{t('Overview:')}}</dt>
           <dd v-if="movie.overview">{{movie.overview}}</dd>
           <dt v-if="movie.runtime">{{t('Runtime:')}}</dt>
@@ -32,38 +32,50 @@
           <dt v-if="movie.budget">{{t('Budget:')}}</dt>
           <dd v-if="movie.budget">${{movie.budget | currency}}</dd>
 
-          <dt>{{t('Genre(s):')}}</dt>
-          <dd>
+          <dt v-if="genres.length">{{t('Genre(s):')}}</dt>
+          <dd v-if="genres.length">
             <ul class="list-inline">
-              <li  v-for="(gerne, num) in movie.genres">  {{ gerne.name }}<span v-if="num < movie.genres.length -1">, </span></li>
+              <li  v-for="(gerne, num) in genres">  {{ gerne.name }}<span v-if="num < genres.length -1">, </span></li>
             </ul>
           </dd>
 
-          <dt>{{t('Language(s):')}}</dt>
-          <dd>
+          <dt v-if="languages.length">{{t('Language(s):')}}</dt>
+          <dd v-if="languages.length">
             <ul class="list-inline">
-              <li v-for="(language, num) in movie.spoken_languages">  {{ language.name }}<span v-if="num < movie.spoken_languages.length -1">, </span></li>
+              <li v-for="(language, num) in languages">  {{ language.name }}<span v-if="num < languages.length -1">, </span></li>
             </ul>
           </dd>
-          <dt>{{t('Country(ies):')}}</dt>
-          <dd>
+          <dt v-if="countries.length">{{t('Country(ies):')}}</dt>
+          <dd v-if="countries.length">
             <ul class="list-inline">
-              <li v-for="(country, num) in movie.production_countries">  {{ country.name }}<span v-if="num < movie.production_countries.length -1">, </span></li>
+              <li v-for="(country, num) in countries">  {{ country.name }}<span v-if="num < countries.length -1">, </span></li>
             </ul>
           </dd>
-          <dt>{{t('Cast:')}}</dt>
-          <dd>
-            <ul class="list-inline">
-              <li v-for="(actor, num) in credits.cast" v-if="num < 10">  {{ actor.name }}<span v-if="num < 10 -1">, </span></li>
-            </ul>
-          </dd>
-          <dt>
-            <button class="btn btn-link" @click="getBack()"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></button>
-          </dt>
-          <dd></dd>
         </dl>
+
       </div>
     </div>
+
+    <h3 v-if="cast.length" v-translate>Top cast:</h3>
+
+    <ul class="list-inline cast-list" v-if="cast.length">
+      <li v-for="(actor, num) in cast" v-if="num < 8">
+          <img
+            v-if="profilePaths[num]"
+            class="crew-image"
+            width="132"
+            height="132"
+            v-bind:src="creditsPath + actor.profile_path"
+            alt="actor.name">
+          <div
+            v-if="!profilePaths[num]"
+            class="no_image_holder">
+          </div>
+          <h5 class="text-center">{{actor.name}}</h5>
+          <h6 class="text-center">{{actor.character}}</h6>
+      </li>
+    </ul>
+    <button class="btn btn-link" @click="getBack()"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></button>
   </div>
 
    <!-- <pre> {{movie}}</pre>  -->

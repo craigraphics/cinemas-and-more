@@ -7,5 +7,6 @@ module.exports = {
     "Genre(s):": "Género(s):",
     "Language(s):": "Idioma(s):",
     "Country(ies):": "País(es)",
+    "Top cast:": "Elenco:"
   }
 };
