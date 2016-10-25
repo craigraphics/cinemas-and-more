@@ -1,5 +1,5 @@
 <template>
-  <div class="col-sm-4">
+  <div class="col-lg-4 col-md-6 col-xs-12">
     <div class="card mb-1">
       <router-link :to="{ name: 'movie', params: { lang: $store.state.commonService.lang, movieId: film.  id }}">
         <img
@@ -29,7 +29,7 @@
           </li>
          </ul>
 
-         <small class="tag  tag-default ">
+         <small class="tag tag-default">
            <i class="fa fa-star" aria-hidden="true"></i>
            {{film.vote_average}}
          </small>
@@ -53,11 +53,14 @@
 </script>
 
 <style lang="scss" scoped>
-.card {
-  display: flex;
-  flex-direction: column;
-  img {
-    width: 100%;
+  .row > div[class*='col-'] {
+    display: flex;
   }
-}
+
+  .card {
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+  }
 </style>

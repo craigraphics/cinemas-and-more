@@ -1,54 +1,54 @@
 <section  class="movie">
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-lg-4 col-md-6 flex-xs-last flex-md-first">
         <img
           v-if="movie.poster_path"
           v-bind:src="path + movie.poster_path"
           v-bind:alt="movie.title + ' poster'"
-          class="img-responsive poster">
+          class="img-fluid poster mb-1">
       </div>
-      <div class="col-md-8">
-        <h3 class="movie-title">
+      <div class="col-lg-8 col-md-6">
+        <h2 class="movie-title">
           {{movie.title}}
           <small> ({{movie.release_date | dateformat('YYYY')}}) </small>
-          <small class="label label-warning">
+          <small class="tag tag-default">
             <i class="fa fa-star" aria-hidden="true"></i>
             {{movie.vote_average}}
           </small>
-        </h3>
-        <hr>
-        <dl class="dl-horizontal">
-          <dt class="tagline" v-if="movie.tagline">{{t('Tagline:')}}</dt>
-          <dd class="tagline" v-if="movie.tagline">{{movie.tagline}}</dd>
-          <dt v-if="director.length">{{t('Director:')}}</dt>
-          <dd v-if="director.length">{{director}}</dd>
-          <dt v-if="producer.length">{{t('Producer:')}}</dt>
-          <dd v-if="producer.length">{{producer}}</dd>
-          <dt v-if="movie.overview">{{t('Overview:')}}</dt>
-          <dd v-if="movie.overview">{{movie.overview}}</dd>
-          <dt v-if="movie.runtime">{{t('Runtime:')}}</dt>
-          <dd v-if="movie.runtime">{{movie.runtime}} mins</dd>
-          <dt v-if="movie.budget">{{t('Budget:')}}</dt>
-          <dd v-if="movie.budget">${{movie.budget | currency}}</dd>
+        </h2>
+        <hr class="mt-0">
+        <dl class="row">
+          <dt class="lead col-md-3 col-lg-2 text-lg-right" v-if="movie.tagline"> <strong>{{t('Tagline:')}}</strong></dt>
+          <dd class="lead col-md-9 col-lg-10" v-if="movie.tagline">{{movie.tagline}}</dd>
+          <dt class="col-md-3 col-lg-2 text-lg-right " v-if="director.length">{{t('Director:')}}</dt>
+          <dd class="col-md-9 col-lg-10" v-if="director.length">{{director}}</dd>
+          <dt class="col-md-3 col-lg-2 text-lg-right" v-if="producer.length">{{t('Producer:')}}</dt>
+          <dd class="col-md-9 col-lg-10" v-if="producer.length">{{producer}}</dd>
+          <dt class="col-md-3 col-lg-2 text-lg-right" v-if="movie.overview">{{t('Overview:')}}</dt>
+          <dd class="col-md-9 col-lg-10" v-if="movie.overview">{{movie.overview}}</dd>
+          <dt class="col-md-3 col-lg-2 text-lg-right" v-if="movie.runtime">{{t('Runtime:')}}</dt>
+          <dd class="col-md-9 col-lg-10" v-if="movie.runtime">{{movie.runtime}} mins</dd>
+          <dt class="col-md-3 col-lg-2 text-lg-right" v-if="movie.budget">{{t('Budget:')}}</dt>
+          <dd class="col-md-9 col-lg-10" v-if="movie.budget">${{movie.budget | currency}}</dd>
 
-          <dt v-if="genres.length">{{t('Genre(s):')}}</dt>
-          <dd v-if="genres.length">
-            <ul class="list-inline">
-              <li  v-for="(gerne, num) in genres">  {{ gerne.name }}<span v-if="num < genres.length -1">, </span></li>
+          <dt class="col-md-3 col-lg-2 text-lg-right" v-if="genres.length">{{t('Genre(s):')}}</dt>
+          <dd class="col-md-9 col-lg-10" v-if="genres.length">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item" v-for="(gerne, num) in genres">  {{ gerne.name }}<span v-if="num < genres.length -1">, </span></li>
             </ul>
           </dd>
 
-          <dt v-if="languages.length">{{t('Language(s):')}}</dt>
-          <dd v-if="languages.length">
-            <ul class="list-inline">
-              <li v-for="(language, num) in languages">  {{ language.name }}<span v-if="num < languages.length -1">, </span></li>
+          <dt class="col-md-3 col-lg-2 text-lg-right" v-if="languages.length">{{t('Language(s):')}}</dt>
+          <dd class="col-md-9 col-lg-10" v-if="languages.length">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item" v-for="(language, num) in languages">  {{ language.name }}<span v-if="num < languages.length -1">, </span></li>
             </ul>
           </dd>
-          <dt v-if="countries.length">{{t('Country(ies):')}}</dt>
-          <dd v-if="countries.length">
-            <ul class="list-inline">
-              <li v-for="(country, num) in countries">  {{ country.name }}<span v-if="num < countries.length -1">, </span></li>
+          <dt class="col-md-3 col-lg-2 text-lg-right" v-if="countries.length">{{t('Country(ies):')}}</dt>
+          <dd class="col-md-9 col-lg-10" v-if="countries.length">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item" v-for="(country, num) in countries">  {{ country.name }}<span v-if="num < countries.length -1">, </span></li>
             </ul>
           </dd>
         </dl>
@@ -58,25 +58,30 @@
 
     <h3 v-if="cast.length" v-translate>Top cast:</h3>
 
-    <ul class="list-inline cast-list" v-if="cast.length">
-      <li v-for="(actor, num) in cast" v-if="num < 8">
-          <img
-            v-if="profilePaths[num]"
-            class="crew-image"
-            width="132"
-            height="132"
-            v-bind:src="creditsPath + actor.profile_path"
-            alt="actor.name">
-          <div
-            v-if="!profilePaths[num]"
-            class="no_image_holder">
-          </div>
-          <h5 class="text-center">{{actor.name}}</h5>
-          <h6 class="text-center">{{actor.character}}</h6>
-      </li>
-    </ul>
+    <div class="row text-xs-center flex-items-xs-center cast" v-if="cast.length">
+      <figure class="col-sm-6 col-md-4 col-lg-2 text-lg-right" v-for="(actor, num) in cast" v-if="num < 6">
+        <img
+          v-if="profilePaths[num]"
+          class="crew-image rounded-circle"
+          width="132"
+          height="132"
+          v-bind:src="creditsPath + actor.profile_path"
+          alt="actor.name">
+        <img
+          v-if="!profilePaths[num]"
+          class="crew-image rounded-circle"
+          width="132"
+          height="132"
+          src="../../assets/no-user.gif"
+          alt="actor.name">
+          <figcaption class="text-xs-center">
+            <h5 class="text-truncate mb-0">{{actor.name}}</h5>
+            <h6 class="text-center text-truncate">{{actor.character}}</h6>
+          </figcaption>
+      </div>
+    </figure>
+
     <button class="btn btn-link" @click="getBack()"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></button>
   </div>
 
-   <!-- <pre> {{movie}}</pre>  -->
 </section>

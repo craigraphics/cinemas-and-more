@@ -1,111 +1,39 @@
-/*@import '../../scss/variables';
 @import '../../scss/brand-variables';
 
-ul {
-  margin-bottom: 0;
-}
-
-.poster {
-  width:100%;
-}
-
 .movie {
-  padding: $space*2 0 ($space*3) 0;
+  padding-top: $space;
+  padding-bottom: $space*3;
   background-color: $movie-background;
   color: white;
-  h3 {
-      color: white;
-  }
 }
 
 .movie-title {
-  margin: 0;
-  padding: 0;
-  color: white;
-  font-weight: 800;
+  font-weight: 600;
   small {
     position: relative;
     top: -2px;
     color: lighten($brand-color, 10%)
   }
-  .label {
-    top: -5px;
-    left: 5px;
+  .tag {
     color: #c2c9c2;
-    font-size: 13px;
+    font-size: .8rem;
     background-color: #666;
     .fa-star {
-      font-size:12px;
+      font-size:.75rem;
     }
   }
 }
 
-.dl-horizontal  {
-  margin-top: $space/2;
-  dt, dd {
-    line-height: $font-size-base* 1.7;
-    margin-bottom: 5px;
-  }
-
-}
-
-.tagline {
-  font-size: $font-size-base*1.8;
-}
-
-hr {
-  margin: 7px 0;
-  border-top:  2px solid $brand-color;
-}
-
-
-.cast-list {
-  margin-top: 10px;;
-  li {
-    overflow: hidden;
-  }
-  h5 {
-    color: $white;
-    margin-bottom: 2px;
-    margin-top: 2px;
-    font-size: 18px;
-    width: 132px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-  h6 {
-    color: $white;
-    margin-bottom: 20px;
-    margin-top: 0;
-    width: 132px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-
-}
 .crew-image {
-  display:block;
-  border-radius: 50%;
-  width: 132px;
-  height:  132px;
   border: 3px solid lighten($movie-background, 5%);
 }
 
-.no_image_holder {
-  display: block;
-  width: 132px;
-  height:  132px;
-  border-radius: 50%;
-  line-height:  132px;
-  font-size: 92px;
-  font-family: FontAwesome;
-  text-align: center;
-  background-color: lighten($movie-background, 5%);
-  color: #b5b5b5;
-  box-sizing: border-box;
-  &:before {
-    content: "\f11a";
+.cast {
+  overflow:hidden;
+  h5 {
+    font-size: 1.1rem
   }
-}*/
+  h6 {
+    font-size: .85rem
+  }
+}

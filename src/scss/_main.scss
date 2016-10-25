@@ -9,16 +9,19 @@ button:focus {
     outline:none;
 }
 
+hr {
+  border-top:  2px solid $brand-color;
+}
+
 .navbar {
   background-color:$navbar-bg-color;
 
 }
 
-
 .btn-link, a {
   color: $brand-color;
   &:hover, &:focus {
-    outline:none;
+    outline: none;
     color: darken($brand-color, 20%);
   }
 }
