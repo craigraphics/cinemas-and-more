@@ -9,7 +9,7 @@ export default {
       lang: this.$route.params.lang,
       movies: '',
       genres: '',
-      path: '',
+      path: String(this.$store.state.posterPath.url) +  String(this.$store.state.posterPath.mediumVertical),
       pageTitle: this.$route.params.cat
     }
   },

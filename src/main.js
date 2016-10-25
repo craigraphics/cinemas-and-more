@@ -20,10 +20,10 @@ Vue.use(vueDateFormat)
 import store from './store'
 import router from './router'
 
-
-// ===== Bootstrap components integration (JQuery needed) ======
+// ===== Bootstrap components integration (JQuery  & Tether needed) ======
 window.$ = window.jQuery = require('jquery')
-require('bootstrap-sass')
+window.Tether = require('tether')
+require('bootstrap')
 
 // ======================= Base Component ======================
 import App from './App'

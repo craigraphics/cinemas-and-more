@@ -1,4 +1,5 @@
 @import '../scss/brand-variables';
+@import url("//fonts.googleapis.com/css?family=Roboto:300,400,500");
 
 body {
   background-color:$movie-list-background;
@@ -10,9 +11,9 @@ button:focus {
 
 .navbar {
   background-color:$navbar-bg-color;
-  margin-bottom: 0;
-  border-radius: 0;
+
 }
+
 
 .btn-link, a {
   color: $brand-color;

@@ -19,7 +19,8 @@ const state = {
     url: 'https://image.tmdb.org/t/p/',
     squared: 'w132_and_h132_bestv2/',
     smallWide: 'w320_and_h180_bestv2/',
-    mediumVertical: 'w185_and_h278_bestv2/',
+    // mediumVertical: 'w380_and_h300/',
+    mediumVertical: 'w320_and_h180_bestv2/',
     bigVertical: 'w300_and_h450_bestv2/'
   },
   cats: [

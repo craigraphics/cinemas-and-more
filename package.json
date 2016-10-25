@@ -12,6 +12,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs"
   },
   "dependencies": {
+    "bootstrap": "^4.0.0-alpha.5",
     "bootstrap-material-design": "^0.5.10",
     "bootstrap-sass": "^3.3.7",
     "dateformat": "^1.0.12",
