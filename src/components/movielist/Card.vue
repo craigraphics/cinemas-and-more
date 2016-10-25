@@ -1,6 +1,6 @@
 <template>
-  <div class="col-lg-4 col-md-6 col-xs-12">
-    <div class="card mb-1">
+  <div class="col-md-6 col-xs-12" v-bind:class="'col-lg-'+ column">
+    <div class="card mb-2">
       <router-link :to="{ name: 'movie', params: { lang: $store.state.commonService.lang, movieId: film.  id }}">
         <img
           class="card-img-top img-fluid"
@@ -48,17 +48,28 @@
 
 <script>
   export default {
-    props: ['film', 'path', 'genres', 'index'],
+    props: ['film', 'path', 'genres', 'index', 'column'],
   }
 </script>
 
 <style lang="scss" scoped>
+  @import '../../scss/brand-variables';
   .row > div[class*='col-'] {
     display: flex;
   }
 
   .card {
     overflow: hidden;
+    h4 {
+      a {
+        color: darken($brand-color, 10%);
+        transition: all .2s;
+        &:hover {
+          color: lighten($brand-color, 10%);
+          text-decoration: none;
+        }
+      }
+    }
     img {
       width: 100%;
     }

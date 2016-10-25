@@ -10,12 +10,16 @@ export default {
       movies: '',
       genres: '',
       path: String(this.$store.state.posterPath.url) +  String(this.$store.state.posterPath.mediumVertical),
-      pageTitle: this.$route.params.cat
+      pageTitle: this.$route.params.cat,
+      column: 4
     }
   },
   components: { Card },
   mixins:[myMovieMixin],
   methods: {
+    setColumns(number) {
+      this.column = number;
+    },
     nextPage() {
       this.lang = this.$store.state.commonService.lang;
       this.page += 1;

@@ -5,8 +5,8 @@
         <h1><strong>{{t('Welcome to')}} {{$store.state.appTitle}}</strong></h1>
         <div class="mb-3 mt-0">
           <span v-translate>Change Language</span>:
-          <button class="btn btn-secondary  btn-sm" @click="setLanguage('en-US')">EN</button>
-          <button class="btn btn-secondary  btn-sm" @click="setLanguage('es')">ES</button>
+          <button class="btn btn-secondary btn-sm" @click="setLanguage('en-US')">EN</button>
+          <button class="btn btn-secondary btn-sm" @click="setLanguage('es')">ES</button>
         </div>
 
         <h2>{{t('Hello movie buff!')}}</h2>
