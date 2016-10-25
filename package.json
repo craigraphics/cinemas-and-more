@@ -1,7 +1,7 @@
 {
-  "name": "movies-app",
+  "name": "cinemas-and-more",
   "version": "0.0.1",
-  "description": "A Vue.js 2.0 project",
+  "description": "A Vue.js 2.0 single page webapp that retrieves information about movies",
   "author": "William Craig",
   "private": true,
   "scripts": {
