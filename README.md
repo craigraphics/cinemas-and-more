@@ -17,6 +17,7 @@
 * [Vue Translate](https://github.com/javisperez/vuetranslate)
 * [Bootstrap 4](https://v4-alpha.getbootstrap.com/)
 * [Font Awesome](http://fontawesome.io/)
+* [lodash](https://lodash.com/)
 
 ## Build Setup
 

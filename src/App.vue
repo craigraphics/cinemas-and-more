@@ -48,6 +48,7 @@ export default {
   @import "node_modules/bootstrap/scss/responsive-embed";
   @import "node_modules/bootstrap/scss/close";
     @import "node_modules/bootstrap/scss/pagination";
+    @import "node_modules/bootstrap/scss/media";
 
   // Components w/ JavaScript
   @import "node_modules/bootstrap/scss/tooltip";

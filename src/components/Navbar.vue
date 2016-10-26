@@ -1,5 +1,5 @@
 <template>
-    <div class="pos-s-t">
+    <header class="pos-s-t">
       <nav class="navbar navbar-dark bg-inverse1 navbar-static-top">
         <div class="container">
           <button
@@ -33,12 +33,17 @@
           </div>
         </div>
       </nav>
-    </div>
+      <search></search>
+
+    </header>
 </template>
 
 <script>
+  import Search from './Search';
+
   export default {
-    locales: require('../i18n/Navbar.js')
+    locales: require('../i18n/Navbar.js'),
+    components: { Search }
   }
 </script>
 
