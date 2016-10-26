@@ -60,3 +60,15 @@ div[class*='col-'] {
     }
   }
 }
+
+.page-link{
+  &:focus {
+    color: $brand-color;
+    background-color:$white;
+  }
+  &:hover {
+    color: $white;
+    background-color:darken($brand-color, 15%);
+    cursor:pointer;
+  }
+}

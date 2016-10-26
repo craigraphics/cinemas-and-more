@@ -2,11 +2,16 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-10 col-md-12">
-        <h3>{{t(pageTitle)}}</h3>
+        <h3 class="mb-1">{{t(pageTitle)}}</h3>
       </div>
       <div class="col-lg-2 text-sm-right hidden-md-down">
         <button v-on:click="setColumns(4)" class="btn btn-transparent btn-icon btn-lg"><i class="fa fa-th" aria-hidden="true"></i></button>
         <button v-on:click="setColumns(6)" class="btn btn-transparent btn-icon btn-lg"><i class="fa fa-th-large" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <div class="clearfix mb-1">
+      <div class="float-sm-right">
+        <pagination v-if="totalPages" v-bind:totalPages="totalPages"></pagination>
       </div>
     </div>
     <div class="row flex-items-xs-center">
@@ -14,9 +19,10 @@
         <card v-bind:film="movie" v-bind:path="path" v-bind:genres="genres" v-bind:index="index" v-bind:column="column"></card>
       </template >
     </div>
-    <nav class="pagination">
-      <button class="btn btn-link pull-left" v-on:click="prevPage()"><i class="fa fa-arrow-circle-left fa-3x" aria-hidden="true"></i></button>
-      <button class="btn btn-link pull-right" v-on:click="nextPage()"><i class="fa fa-arrow-circle-right fa-3x" aria-hidden="true"></i></button>
-    </nav>
+    <div class="clearfix mb-1">
+      <div class="float-sm-right">
+        <pagination v-if="totalPages" v-bind:totalPages="totalPages"></pagination>
+      </div>
+    </div>
   </div>
 </section>

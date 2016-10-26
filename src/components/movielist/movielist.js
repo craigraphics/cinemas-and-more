@@ -1,5 +1,6 @@
 import myMovieMixin from '../../mixins/vue-mixins';
 import Card from './card'
+import Pagination from '../Pagination'
 require('match-media');
 
 export default {
@@ -11,26 +12,15 @@ export default {
       genres: '',
       path: String(this.$store.state.posterPath.url) +  String(this.$store.state.posterPath.mediumVertical),
       pageTitle: this.$route.params.cat,
-      column: 4
+      column: 4,
+      totalPages: ''
     }
   },
-  components: { Card },
+  components: { Card, Pagination },
   mixins:[myMovieMixin],
   methods: {
     setColumns(number) {
       this.column = number;
-    },
-    nextPage() {
-      this.lang = this.$store.state.commonService.lang;
-      this.page += 1;
-      this.$store.state.page = this.page;
-      this.$router.push({name: 'movielists', params: {cat:this.$route.params.cat, lang: this.lang, pageNumber: this.page }});
-    },
-    prevPage() {
-      this.lang = this.$store.state.commonService.lang;
-      (this.page <= 1)  ? this.page = 1 : this.page -= 1;
-      this.$store.state.page = this.page;
-      this.$router.push({name: 'movielists', params: {cat:this.$route.params.cat, lang: this.lang, pageNumber: this.page }});
     },
     setGenreNames() {
       let vm = this;
@@ -80,6 +70,7 @@ export default {
         .then((data) => {
           this.movies = data.body.results;
           this.pageTitle = this.getCategory(this.$route.params.cat).pageTitle;
+          this.totalPages = data.body.total_pages;
 
           if (matchMedia('only screen and (max-width: 480px)').matches) {
             this.path = String(this.$store.state.posterPath.url) + String(this.$store.state.posterPath.smallWide);

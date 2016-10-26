@@ -25,3 +25,6 @@ $navbar-dark-toggler-border: transparent;
 $navbar-border-radius: 0;
 $navbar-dark-color: $white;
 $navbar-dark-hover-color: $logo-color;
+
+$pagination-disabled-color:  $white;
+$pagination-disabled-bg:  desaturate($logo-color, 30% );

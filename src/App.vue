@@ -47,6 +47,7 @@ export default {
   @import "node_modules/bootstrap/scss/tags";
   @import "node_modules/bootstrap/scss/responsive-embed";
   @import "node_modules/bootstrap/scss/close";
+    @import "node_modules/bootstrap/scss/pagination";
 
   // Components w/ JavaScript
   @import "node_modules/bootstrap/scss/tooltip";

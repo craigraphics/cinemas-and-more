@@ -60,6 +60,7 @@
 
   .card {
     overflow: hidden;
+    min-width: 100%;
     h4 {
       a {
         color: darken($brand-color, 10%);
