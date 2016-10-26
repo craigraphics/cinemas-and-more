@@ -1,0 +1,39 @@
+@import '../../scss/brand-variables';
+
+.movie {
+  padding-top: $space;
+  padding-bottom: $space*3;
+  background-color: $movie-background;
+  color: white;
+}
+
+.movie-title {
+  font-weight: 600;
+  small {
+    position: relative;
+    top: -2px;
+    color: lighten($brand-color, 10%)
+  }
+  .tag {
+    color: #c2c9c2;
+    font-size: .8rem;
+    background-color: #666;
+    .fa-star {
+      font-size:.75rem;
+    }
+  }
+}
+
+.crew-image {
+  border: 3px solid lighten($movie-background, 5%);
+}
+
+.cast {
+  overflow:hidden;
+  h5 {
+    font-size: 1.1rem
+  }
+  h6 {
+    font-size: .85rem
+  }
+}

@@ -59,27 +59,29 @@
     <h3 v-if="cast.length" v-translate>Top cast:</h3>
 
     <div class="row text-xs-center flex-items-xs-center cast" v-if="cast.length">
-      <figure class="col-sm-6 col-md-4 col-lg-2 text-lg-right" v-for="(actor, num) in cast" v-if="num < 6">
-        <img
-          v-if="profilePaths[num]"
-          class="crew-image rounded-circle"
-          width="132"
-          height="132"
-          v-bind:src="creditsPath + actor.profile_path"
-          alt="actor.name">
-        <img
-          v-if="!profilePaths[num]"
-          class="crew-image rounded-circle"
-          width="132"
-          height="132"
-          src="../../assets/no-user.gif"
-          alt="actor.name">
+      <figure class="col-sm-6 col-md-4 col-lg-2" v-for="(actor, num) in cast" v-if="num < 6">
+        <router-link :to="{ name: 'person', params: { lang: $store.state.commonService.lang, personId: actor.id }}">
+          <img
+            v-if="profilePaths[num]"
+            class="crew-image rounded-circle"
+            width="132"
+            height="132"
+            v-bind:src="creditsPath + actor.profile_path"
+            alt="actor.name">
+          <img
+            v-if="!profilePaths[num]"
+            class="crew-image rounded-circle"
+            width="132"
+            height="132"
+            src="../../assets/no-user.gif"
+            alt="actor.name">
+          </router-link>
           <figcaption class="text-xs-center">
             <h5 class="text-truncate mb-0">{{actor.name}}</h5>
             <h6 class="text-center text-truncate">{{actor.character}}</h6>
           </figcaption>
-      </div>
-    </figure>
+        </figure>
+      </div>    
 
     <button class="btn btn-link" @click="getBack()"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></button>
   </div>

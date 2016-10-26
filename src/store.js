@@ -21,6 +21,7 @@ const state = {
     smallWide: 'w320_and_h180_bestv2/',
     // mediumVertical: 'w380_and_h300/',
     mediumVertical: 'w320_and_h180_bestv2/',
+    smallVertical: 'w185/',
     bigVertical: 'w500/'
     // bigVertical: 'w300_and_h450_bestv2/'
   },

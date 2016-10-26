@@ -1,7 +1,7 @@
 <template>
   <div class="col-md-6 col-xs-12" v-bind:class="'col-lg-'+ column">
     <div class="card mb-2">
-      <router-link :to="{ name: 'movie', params: { lang: $store.state.commonService.lang, movieId: film.  id }}">
+      <router-link :to="{ name: 'movie', params: { lang: $store.state.commonService.lang, movieId: film.id }}">
         <img
           class="card-img-top img-fluid"
           v-if="film.poster_path"
