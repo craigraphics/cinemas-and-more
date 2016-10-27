@@ -7,7 +7,7 @@
           <li class="list-inline-item"><button class="btn btn-link btn-sm" @click="setLanguage('en-US')">English</button></li>
           <li class="list-inline-item"><button class="btn btn-link btn-sm" @click="setLanguage('es')">Español</button></li>
         </ul>
-        <small>{{$store.state.appTitle}} <span v-translate>is created by craigraphcis, 2016</span></small>
+        <small>{{$store.state.appTitle}} <span v-translate>is created by craigraphics, 2016</span></small>
       </div>
     </div>
   </footer>
