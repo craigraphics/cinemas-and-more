@@ -22,7 +22,6 @@ export default {
 
       personService
         .then((response) => {
-          // console.log(response.body);
           this.actor = response.body;
         })
         .catch(this.getError)
@@ -34,7 +33,7 @@ export default {
   created () {
     this.getPersonId();
   },
-  locales: require('../../i18n/Movieitiem.js'),
+  locales: require('../../i18n/Personitem.js'),
   watch: {
     '$route' (to, from) {
       this.getPersonId();
