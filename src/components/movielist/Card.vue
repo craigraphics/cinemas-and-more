@@ -4,12 +4,12 @@
       <router-link :to="{ name: 'movie', params: { lang: $store.state.commonService.lang, movieId: film.id }}">
         <img
           class="card-img-top img-fluid"
-          v-if="film.poster_path"
-          v-bind:src="path + film.poster_path"
+          v-if="film.backdrop_path"
+          v-bind:src="path + film.backdrop_path"
           v-bind:alt="film.title + ' poster'">
         <img
           class="card-img-top img-fluid"
-          v-if="!film.poster_path"
+          v-if="!film.backdrop_path"
           src="../../assets/no-image.gif"
           v-bind:alt="film.title + ' poster'">
       </router-link>

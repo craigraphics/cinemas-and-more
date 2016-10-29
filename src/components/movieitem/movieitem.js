@@ -2,8 +2,9 @@ export default {
   data () {
     return {
       movie: '',
-      path: (String(this.$store.state.posterPath.url) + String(this.$store.state.posterPath.bigVertical)),
-      creditsPath: (String(this.$store.state.posterPath.url) + String(this.$store.state.posterPath.squared)),
+      path: String(this.$store.state.images.secure_base_url) +  String(this.$store.state.images.poster_sizes[4]),
+      backPath: String(this.$store.state.images.secure_base_url) +  String(this.$store.state.images.backdrop_sizes[0]),
+      creditsPath: String(this.$store.state.images.secure_base_url) +  String(this.$store.state.images.profile_sizes[1]),
       languages: '',
       genres: '',
       countries: '',
@@ -32,6 +33,16 @@ export default {
           this.languages = this.movie.spoken_languages;
           this.genres = this.movie.genres;
           this.countries =  this.movie.production_countries;
+
+          if (matchMedia('only screen and (max-width: 480px)').matches) {
+            this.backPath = String(this.$store.state.images.secure_base_url) +  String(this.$store.state.images.backdrop_sizes[0]);
+          } else if (matchMedia('only screen and (max-width: 780px)').matches) {
+            this.backPath = String(this.$store.state.images.secure_base_url) +  String(this.$store.state.images.backdrop_sizes[1]);
+          } else {
+            this.backPath = String(this.$store.state.images.secure_base_url) +  String(this.$store.state.images.backdrop_sizes[2]);
+          }
+
+
           this.getCredits();
         })
         .catch(this.getError)

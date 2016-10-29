@@ -1,5 +1,14 @@
 @import '../scss/brand-variables';
-@import url("//fonts.googleapis.com/css?family=Roboto:300,400,500");
+/*@import url("//fonts.googleapis.com/css?family=Roboto:300,400,500");*/
+
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 3;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 5;
+  }
+}
 
 body {
   background-color:$movie-list-background;
@@ -70,5 +79,117 @@ div[class*='col-'] {
     color: $white;
     background-color:darken($brand-color, 15%);
     cursor:pointer;
+  }
+}
+
+.wrap {
+  @include make-container();
+}
+
+.row-wrapper {
+  @include make-row();
+}
+
+.img-content {
+  @include make-col(6);
+
+  @include media-breakpoint-up(sm) {
+    @include make-col(4);
+  }
+
+  @include media-breakpoint-up(md) {
+    @include make-col(2);
+  }
+  @include media-breakpoint-up(lg) {
+    @include make-col(2);
+  }
+}
+
+.img-content-wide {
+  @include make-col(6);
+
+  @include media-breakpoint-up(sm) {
+    @include make-col(4);
+  }
+
+  @include media-breakpoint-up(md) {
+    @include make-col(8);
+  }
+  @include media-breakpoint-up(lg) {
+    @include make-col(4);
+  }
+}
+
+.cover-image {
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  min-height: $space*5;
+  background: center center no-repeat fixed $white;
+  background-size: cover;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  &:after{
+    width:100%;
+    height:100%;
+    position: absolute;
+    content: " ";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba($navbar-bg-color, .8)
+  }
+}
+
+.img-effect  {
+  background: center center no-repeat;
+  background-size: cover;
+  position: relative;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-attachment: initial;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 16px rgba(255,255,255,0.1), 0 1px 2px rgba(0,0,0,0.05);
+  transition: all 0.4s ease-in-out;
+  .mask {
+    position: absolute;
+    top: 0;
+    background: rgba($navbar-bg-color, 0.8);
+    padding-top: $space/2;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 1;
+    transition: all 0.4s ease-in-out;
+    transform: scale(1);
+    text-align: center;
+    color:$white;
+    h3 {
+      color: $white;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 1.3rem;
+    }
+  }
+  &:hover {
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1), 0 1px 2px rgba(0,0,0,0.1);
+    .mask {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    .mask {
+      padding-top: $space;
+      transform: scale(0);
+      opacity: 0;
+      h3 {
+        font-size: 1.8rem;
+      }
+    }
   }
 }

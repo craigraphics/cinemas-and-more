@@ -1,4 +1,6 @@
 <template>
+  <section>
+
   <div class="container hello">
     <div class="row flex-items-xs-center">
       <div class="col-md-7 col-xs-12">
@@ -22,15 +24,23 @@
           class="btn lg btn-success">
           <span v-translate>Top rated</span>
         </router-link>
+
       </div>
     </div>
+
   </div>
+  <upcoming></upcoming>
+</section>
+
 </template>
 
 <script>
   import myMovieMixin from '../mixins/vue-mixins';
+  import Upcoming from './Upcoming';
+
   export default {
     locales: require('../i18n/Hello.js'),
+    components: { Upcoming },
     mixins:[myMovieMixin]
   }
 </script>
@@ -40,7 +50,7 @@
 
   .container {
     padding-top: $space*2;
-    padding-bottom: ($space*3);
+     padding-bottom: ($space);
   }
 
   h1 {

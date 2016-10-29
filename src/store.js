@@ -15,16 +15,39 @@ const state = {
     get params () { params: { api_key: this.apiKey } },
     headers: { 'Accept-Language': 'en-US' }
   },
-  posterPath: {
-    url: 'https://image.tmdb.org/t/p/',
-    squared: 'w132_and_h132_bestv2/',
-    smallWide: 'w320_and_h180_bestv2/',
-    // mediumVertical: 'w380_and_h300/',
-    mediumVertical: 'w320_and_h180_bestv2/',
-    smallVertical: 'w185/',
-    bigVertical: 'w500/'
-    // bigVertical: 'w300_and_h450_bestv2/'
+  images: {
+    base_url: 'http://image.tmdb.org/t/p/',
+    secure_base_url: 'https://image.tmdb.org/t/p/',
+    backdrop_sizes: [
+      'w300',
+      'w780',
+      'w1280'
+    ],
+    poster_sizes: [
+      'w92',
+      'w154',
+      'w185',
+      'w342',
+      'w500',
+      'w780'
+    ],
+    profile_sizes: [
+      'w45',
+      'w185',
+      'h632'
+    ]
   },
+  // posterPath: {
+  //   url: 'https://image.tmdb.org/t/p/',
+  //   squared: 'w132_and_h132_bestv2/',
+  //   smallWide: 'w320_and_h180_bestv2/',
+  //   // mediumVertical: 'w380_and_h300/',
+  //   mediumVertical: 'w320_and_h180_bestv2/',
+  //   medium: 'w320/',
+  //   smallVertical: 'w185/',
+  //   bigVertical: 'w500/'
+  //   // bigVertical: 'w300_and_h450_bestv2/'
+  // },
   cats: [
     {name: 'nowplaying', cat: 'now_playing', pageTitle: 'Now Playing'},
     {name: 'toprated', cat: 'top_rated', pageTitle: 'Top Rated'}

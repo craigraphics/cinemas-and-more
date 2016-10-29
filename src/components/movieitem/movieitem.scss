@@ -1,10 +1,11 @@
 @import '../../scss/brand-variables';
 
 .movie {
-  padding-top: $space;
+  padding-top: $space*2;
   padding-bottom: $space*3;
   background-color: $movie-background;
-  color: white;
+  color: $white;
+  position: relative;
 }
 
 .movie-title {

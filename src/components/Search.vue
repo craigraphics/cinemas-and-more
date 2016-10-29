@@ -78,7 +78,7 @@
         results: '',
         loading: false,
         placeholder: 'Search for a movie or person...',
-        path: String(this.$store.state.posterPath.url) +  String(this.$store.state.posterPath.smallVertical)
+        path: String(this.$store.state.images.secure_base_url) +  String(this.$store.state.images.profile_sizes[1])
       }
     },
     locales: require('../i18n/Search.js'),

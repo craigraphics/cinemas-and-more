@@ -10,7 +10,7 @@ export default {
       lang: this.$route.params.lang,
       movies: '',
       genres: '',
-      path: String(this.$store.state.posterPath.url) +  String(this.$store.state.posterPath.mediumVertical),
+      path: String(this.$store.state.images.secure_base_url) +  String(this.$store.state.images.backdrop_sizes[0]),
       pageTitle: this.$route.params.cat,
       column: 4,
       totalPages: ''
@@ -73,9 +73,9 @@ export default {
           this.totalPages = data.body.total_pages;
 
           if (matchMedia('only screen and (max-width: 480px)').matches) {
-            this.path = String(this.$store.state.posterPath.url) + String(this.$store.state.posterPath.smallWide);
+            this.path = String(this.$store.state.images.secure_base_url) +  String(this.$store.state.images.backdrop_sizes[0]);
           } else {
-            this.path = String(this.$store.state.posterPath.url) +  String(this.$store.state.posterPath.mediumVertical);
+            this.path = String(this.$store.state.images.secure_base_url) +  String(this.$store.state.images.backdrop_sizes[1]);
           }
         })
         .then(this.setGenreNames)
