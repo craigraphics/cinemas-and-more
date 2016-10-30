@@ -1,3 +1,5 @@
+import myMovieMixin from '../../mixins/vue-mixins';
+
 export default {
   data () {
     return {
@@ -41,9 +43,9 @@ export default {
           } else {
             this.backPath = String(this.$store.state.images.secure_base_url) +  String(this.$store.state.images.backdrop_sizes[2]);
           }
-
-
           this.getCredits();
+          this.scrollToTop(100);
+
         })
         .catch(this.getError)
     },
@@ -78,6 +80,7 @@ export default {
       console.log(err);
     }
   },
+  mixins:[myMovieMixin],
   created () {
     this.getMovieId();
   },

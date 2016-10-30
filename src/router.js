@@ -11,7 +11,7 @@ import Person from './components/person/Person';
 
 // ==================== Router registration ====================
 export default new Router({
-  mode: 'hash',
+  mode: 'history',
   routes: [
     { name: 'home', path: '/', component: Hello },
     { name: 'movielists', path: '/category/:cat/lang/:lang/page/:pageNumber/', component: Movielist },

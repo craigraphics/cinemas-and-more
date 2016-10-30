@@ -9,13 +9,11 @@ import vueTruncate from 'vue-truncate-filter'
 import vueCurrency from './filters/vue-currency-filter'
 import vueDateFormat from './filters/vue-dateformat-filter'
 
-
 Vue.use(VueResource)
 Vue.use(VueTranslate)
 Vue.use(vueTruncate)
 Vue.use(vueCurrency)
 Vue.use(vueDateFormat)
-// Vue.use(myMyxin)
 
 import store from './store'
 import router from './router'

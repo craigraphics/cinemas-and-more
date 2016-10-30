@@ -23,8 +23,11 @@
 </template>
 
 <script>
+  import myMovieMixin from '../mixins/vue-mixins';
+
   export default {
     props: ['totalPages'],
+    mixins:[myMovieMixin],
     data () {
       return {
         first: 1,
@@ -49,6 +52,7 @@
         let router = this.$router.currentRoute;
         this.current = number;
         this.$router.push({name: router.name, params: {cat:this.$route.params.cat, lang: this.$route.params.lang, pageNumber: number }});
+        this.scrollToTop( 500 );
       }
     },
     created () {

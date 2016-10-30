@@ -5,16 +5,18 @@
         <img
           class="card-img-top img-fluid"
           v-if="film.backdrop_path"
+          v-bind:title="film.title"
           v-bind:src="path + film.backdrop_path"
           v-bind:alt="film.title + ' poster'">
         <img
           class="card-img-top img-fluid"
           v-if="!film.backdrop_path"
+          v-bind:title="film.title"
           src="../../assets/no-image.gif"
           v-bind:alt="film.title + ' poster'">
       </router-link>
        <div class="card-block">
-         <h4 class="card-title mb-0 text-truncate">
+         <h4 class="card-title mb-0 text-truncate" v-bind:title="film.title">
            <router-link :to="{ name: 'movie', params: { lang: $store.state.commonService.lang, movieId: film.id }}">
              {{ film.title }}
            </router-link>
@@ -47,8 +49,10 @@
 </template>
 
 <script>
+  import myMovieMixin from '../../mixins/vue-mixins';
   export default {
     props: ['film', 'path', 'genres', 'index', 'column'],
+    mixins:[myMovieMixin]
   }
 </script>
 
