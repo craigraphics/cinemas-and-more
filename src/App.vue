@@ -1,8 +1,10 @@
 <template>
-  <main id="app">
-    <navbar></navbar>
-    <router-view></router-view>
-    <footer-vue></footer-vue
+  <main id="app" class="app" role="main">
+    <section class="main-wrapper">
+      <navbar></navbar>
+      <router-view></router-view>
+    </section>
+    <footer-vue></footer-vue>
   </main>
 </template>
 

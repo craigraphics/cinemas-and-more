@@ -9,8 +9,22 @@
   }
 }
 
+
+html, body {
+  height: 100%;
+}
+
 body {
   background-color:$movie-list-background;
+}
+
+.app {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.main-wrapper {
+  flex: 1;
 }
 
 button:focus {

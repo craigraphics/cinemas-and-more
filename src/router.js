@@ -8,15 +8,16 @@ import Hello from './components/Hello';
 import Movielist from './components/Nowplaying';
 import Item from './components/movieitem/Item';
 import Person from './components/person/Person';
+import Notfound from './components/Notfound';
 
 // ==================== Router registration ====================
 export default new Router({
   mode: 'history',
   routes: [
-    { name: 'notFound', path: '*', component: Hello },
     { name: 'home', path: '/', component: Hello },
     { name: 'movielists', path: '/category/:cat/lang/:lang/page/:pageNumber/', component: Movielist },
     { name: 'movie', path: '/lang/:lang/movie/:movieId', component: Item },
-    { name: 'person', path: '/lang/:lang/person/:personId', component: Person }
+    { name: 'person', path: '/lang/:lang/person/:personId', component: Person },
+    { path: '*', component: Notfound }
   ]
 });
