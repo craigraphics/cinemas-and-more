@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row flex-items-xs-center">
         <div class="col-md-7 col-xs-12">
-          <h2>Upcoming:</h2>
+          <h2 v-translate>Upcoming:</h2>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@
          return true
       }
     },
-    mounted () {},
+    locales: require('../i18n/Hello.js'),
     methods: {
       getUpcoming() {
         let movieService =  this.$http.get(this.$store.state.commonService.api, { params: {

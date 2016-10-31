@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="row flex-items-xs-center">
-      <template v-for="(movie, index) in movies">
+      <template v-if="movies" v-for="(movie, index) in movies">
         <card v-bind:film="movie" v-bind:path="path" v-bind:genres="genres" v-bind:index="index" v-bind:column="column"></card>
       </template >
     </div>

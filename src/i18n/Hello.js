@@ -8,6 +8,7 @@ module.exports = {
     "The Cinemas & More is a very small project created in 2016 to help the media center community serve the movies now playing in theaters.": "Cinemas & More es un pequeño projecto creado en 2016 para que ayude a la comunidad a mostrar las películas que se encuentran en cartelera en estos momentos.",
     "Take me to the movie list!": "Llévame a la lista",
     "Now playing": "Lanzamientos",
-    "Top rated": "Mejor calificados"
+    "Top rated": "Mejor calificados",
+    "Upcoming:": "Próximos estrenos:"
   }
 };

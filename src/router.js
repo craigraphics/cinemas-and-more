@@ -13,6 +13,7 @@ import Person from './components/person/Person';
 export default new Router({
   mode: 'history',
   routes: [
+    { name: 'notFound', path: '*', component: Hello },
     { name: 'home', path: '/', component: Hello },
     { name: 'movielists', path: '/category/:cat/lang/:lang/page/:pageNumber/', component: Movielist },
     { name: 'movie', path: '/lang/:lang/movie/:movieId', component: Item },

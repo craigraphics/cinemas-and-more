@@ -1,5 +1,4 @@
 @import '../scss/brand-variables';
-/*@import url("//fonts.googleapis.com/css?family=Roboto:300,400,500");*/
 
 .card-columns {
   @include media-breakpoint-only(lg) {
@@ -29,6 +28,17 @@ button:active, button:focus {
 .navbar {
   background-color:$navbar-bg-color;
 
+}
+
+.navbar-dark  {
+  .navbar-nav  {
+    .nav-link{
+      &.router-link-active {
+        color: lighten($navbar-bg-color, 20% );
+        cursor: default;
+      }
+    }
+  }
 }
 
 div[class*='col-'] {
