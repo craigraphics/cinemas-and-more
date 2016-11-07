@@ -2,7 +2,7 @@
   <nav aria-label="Page navigation">
     <ul class="pagination mb-0 mt-0">
       <li class="page-item">
-        <button class="page-link"  v-on:click="goToPage(prevCurrent)" aria-label="Previous">
+        <button class="page-link" v-show="current > 1" v-on:click="goToPage(prevCurrent)" aria-label="Previous">
           <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
           <span class="sr-only">Previous</span>
         </button>
@@ -33,7 +33,7 @@
         first: 1,
         prevCurrent: '',
         prevTen: '',
-        current: Number(this.$route.params.pageNumber),
+        current: parseInt(this.$route.params.pageNumber),
         nextCurrent: '',
         nextTen: '',
         last: ''
@@ -41,12 +41,12 @@
     },
     methods: {
       assignPages() {
-        this.current = Number(this.$route.params.pageNumber);
-        this.prevCurrent = Number(this.current) - 1;
-        this.nextCurrent = Number(this.current) + 1;
-        this.prevTen = Number(this.current) - 10;
-        this.nextTen = Number(this.current) + 10;
-        this.last = Number(this.totalPages);
+        this.current = parseInt(this.$route.params.pageNumber);
+        this.prevCurrent = parseInt(this.current) - 1;
+        this.nextCurrent = parseInt(this.current) + 1;
+        this.prevTen = parseInt(this.current) - 10;
+        this.nextTen = parseInt(this.current) + 10;
+        this.last = parseInt(this.totalPages);
       },
       goToPage(number){
         let router = this.$router.currentRoute;

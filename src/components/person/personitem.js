@@ -4,7 +4,7 @@ export default {
   data () {
     return {
       actor: '',
-      path: String(this.$store.state.images.secure_base_url) + String(this.$store.state.images.profile_sizes[2]),
+      path: this.$store.state.images.secure_base_url + this.$store.state.images.profile_sizes[2],
     }
   },
   components: { knownMovies },

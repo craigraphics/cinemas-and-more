@@ -18,11 +18,8 @@
             aria-expanded="false">
 
             <router-link :to="{ name: 'home'}" class="navbar-brand">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-film fa-stack-1x fa-inverse"></i>
-              </span>
-              {{$store.state.appTitle}}
+               <img src="../assets/cinemas-logo.svg?65656546546" height="26" alt="Cinemas &amp; More Logo">
+              Cinemas & More
             </router-link>
 
             <ul class="nav navbar-nav float-md-right">
@@ -54,6 +51,11 @@
     background-color: $white;
   }
   .navbar-brand {
+    img {
+      position: relative;
+      top: -3px;
+    }
+
     .fa-lg {
       font-size: 17px;
       margin-top: -5px;

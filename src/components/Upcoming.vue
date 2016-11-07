@@ -35,8 +35,8 @@
     data () {
       return {
         movies: '',
-        smallPath: String(this.$store.state.images.secure_base_url) +  String(this.$store.state.images.backdrop_sizes[0]),
-        bigPath: String(this.$store.state.images.secure_base_url) +  String(this.$store.state.images.backdrop_sizes[1])
+        smallPath: this.$store.state.images.secure_base_url +  this.$store.state.images.backdrop_sizes[0],
+        bigPath: this.$store.state.images.secure_base_url +  this.$store.state.images.backdrop_sizes[1]
       }
     },
     computed: {

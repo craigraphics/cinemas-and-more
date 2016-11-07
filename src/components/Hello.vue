@@ -4,7 +4,8 @@
   <div class="container hello">
     <div class="row flex-items-xs-center">
       <div class="col-md-7 col-xs-12">
-        <h1><strong>{{t('Welcome to')}} {{$store.state.appTitle}}</strong></h1>
+        <h1>{{t('Welcome to')}}  Cinemas & More </h1>
+
         <div class="mb-3 mt-0">
           <span v-translate>Change Language</span>:
           <button class="btn btn-secondary btn-sm" @click="setLanguage('en-US')">EN</button>

@@ -6,11 +6,11 @@ require('match-media');
 export default {
   data() {
     return {
-      page:  Number(this.$route.params.pageNumber),
+      page:  parseInt(this.$route.params.pageNumber),
       lang: this.$route.params.lang,
       movies: '',
       genres: '',
-      path: String(this.$store.state.images.secure_base_url) +  String(this.$store.state.images.backdrop_sizes[0]),
+      path: this.$store.state.images.secure_base_url +  this.$store.state.images.backdrop_sizes[0],
       pageTitle: this.$route.params.cat,
       column: 4,
       totalPages: ''
@@ -73,9 +73,9 @@ export default {
           this.totalPages = data.body.total_pages;
 
           if (matchMedia('only screen and (max-width: 480px)').matches) {
-            this.path = String(this.$store.state.images.secure_base_url) +  String(this.$store.state.images.backdrop_sizes[0]);
+            this.path = this.$store.state.images.secure_base_url + this.$store.state.images.backdrop_sizes[0];
           } else {
-            this.path = String(this.$store.state.images.secure_base_url) +  String(this.$store.state.images.backdrop_sizes[1]);
+            this.path = this.$store.state.images.secure_base_url + this.$store.state.images.backdrop_sizes[1];
           }
         })
         .then(this.setGenreNames)
