@@ -1,7 +1,7 @@
 <template>
   <footer class="text-center">
     <div class="row flex-items-xs-center">
-      <div class="col-lg-3 text-xs-center">
+      <div class="col-lg-4 text-xs-center">
         <ul class="list-inline text-xs-center">
           <li class="list-inline-item" v-translate>Translate:</li>
           <li class="list-inline-item"><button class="btn btn-link btn-sm" @click="setLanguage('en-US')">English</button></li>

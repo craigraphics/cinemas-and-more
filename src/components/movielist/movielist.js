@@ -69,7 +69,7 @@ export default {
       listService
         .then((data) => {
           this.movies = data.body.results;
-          this.pageTitle = this.getCategory(this.$route.params.cat).pageTitle;
+          this.pageTitle = this.getCategory(this.$route.params.cat).pageTitle || 'Movies:';
           this.totalPages = data.body.total_pages;
 
           if (matchMedia('only screen and (max-width: 480px)').matches) {

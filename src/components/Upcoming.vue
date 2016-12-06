@@ -3,7 +3,9 @@
     <div class="container">
       <div class="row flex-items-xs-center">
         <div class="col-md-7 col-xs-12">
-          <h2 v-translate>Upcoming:</h2>
+          <router-link class="default-title" :to="{ name: 'movielists', params: {cat: 'upcoming', lang: $store.state.commonService.lang, pageNumber: 1 }}">
+            <h2 v-translate>Upcoming:</h2>
+          </router-link>
         </div>
       </div>
     </div>
@@ -71,5 +73,10 @@
 
   .wrap {
     padding-bottom: $space*3;
+  }
+  .default-title {
+    &:hover {
+      text-decoration: none;
+    }
   }
 </style>

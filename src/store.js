@@ -39,7 +39,8 @@ const state = {
   },
   cats: [
     {name: 'nowplaying', cat: 'now_playing', pageTitle: 'Now Playing'},
-    {name: 'toprated', cat: 'top_rated', pageTitle: 'Top Rated'}
+    {name: 'toprated', cat: 'top_rated', pageTitle: 'Top Rated'},
+    {name: 'upcoming', cat: 'upcoming', pageTitle: 'Upcoming'}
   ]
 }
 

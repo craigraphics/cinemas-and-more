@@ -3,6 +3,7 @@ module.exports = {
     "Home": "Inicio",
     "Movies": "Películas" ,
     "Now Playing": "Lanzamientos",
-    "Top Rated": "Mejor calificados"  
+    "Top Rated": "Mejor calificados",
+    "Upcoming": "Próximos Lanzamientos"   
   }
 };

@@ -25,6 +25,7 @@
             <ul class="nav navbar-nav float-md-right">
               <li class="nav-item"><router-link :to="{ name: 'home'}" class="nav-link" exact v-translate>{{t('Home')}}</router-link></li>
               <li class="nav-item"><router-link :to="{ name: 'movielists', params: {cat: 'nowplaying', lang: $store.state.commonService.lang, pageNumber: 1 }}" class="nav-link" v-translate>{{t('Now Playing')}}</router-link></li>
+              <li class="nav-item"><router-link :to="{ name: 'movielists', params: {cat: 'upcoming', lang: $store.state.commonService.lang, pageNumber: 1 }}" class="nav-link" v-translate>{{t('Upcoming')}}</router-link></li>
               <li class="nav-item"><router-link :to="{ name: 'movielists', params: {cat: 'toprated', lang: $store.state.commonService.lang, pageNumber: 1 }}" class="nav-link" v-translate>{{t('Top Rated')}}</router-link></li>
             </ul>
           </div>
