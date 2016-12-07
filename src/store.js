@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import fethService from './services'
 
 Vue.use(Vuex)
 
 const state = {
+  movies: {body: {results: ''}},
+  genres: '',
   count: 0,
   page: 1,
   appTitle: 'Cinemas & More',
@@ -45,14 +48,27 @@ const state = {
 }
 
 const mutations = {
-  INCREMENT(state) { state.count++ }
+  ADD_MOVIES(state, movies) {
+    state.movies = movies;
+  },
+  ADD_GENRES(state, genres) {
+    state.genres = genres;
+  }
 }
 
 const actions = {
-  incrementAsync({commit}) {
-    setTimeout(() => {
-      commit('INCREMENT')
-    }, 200)
+  getMovies({ commit }, params) {
+    return fethService.fetchMovies(state.commonService.api, params)
+      .then((response) => commit("ADD_MOVIES", response))
+      //.catch((error) => store.dispatch(AUTHENTICATE_FAILURE, error));
+  },
+  getGenres({ commit }, params) {
+    Vue.http.get(state.commonService.api, params)
+    .then((response) => {
+      let genres = response.body.genres;
+      commit('ADD_GENRES', genres);
+    });
+
   }
 }
 
