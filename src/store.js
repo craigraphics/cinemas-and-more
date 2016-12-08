@@ -44,7 +44,8 @@ const state = {
     {name: 'nowplaying', cat: 'now_playing', pageTitle: 'Now Playing'},
     {name: 'toprated', cat: 'top_rated', pageTitle: 'Top Rated'},
     {name: 'upcoming', cat: 'upcoming', pageTitle: 'Upcoming'}
-  ]
+  ],
+  error: ''
 }
 
 const mutations = {
@@ -53,22 +54,22 @@ const mutations = {
   },
   ADD_GENRES(state, genres) {
     state.genres = genres;
+  },
+  CATCH_ERROR(state, error) {
+    state.error = error;
   }
 }
 
 const actions = {
   getMovies({ commit }, params) {
-    return fethService.fetchMovies(state.commonService.api, params)
-      .then((response) => commit("ADD_MOVIES", response))
-      //.catch((error) => store.dispatch(AUTHENTICATE_FAILURE, error));
+    return fethService.fetchWebService(state.commonService.api, params)
+      .then((response) => commit('ADD_MOVIES', response))
+      .catch((error) => commit('CATCH_ERROR', error));
   },
   getGenres({ commit }, params) {
-    Vue.http.get(state.commonService.api, params)
-    .then((response) => {
-      let genres = response.body.genres;
-      commit('ADD_GENRES', genres);
-    });
-
+    return fethService.fetchWebService(state.commonService.api, params)
+      .then((response) => commit('ADD_GENRES', response.body.genres))
+      .catch((error) => commit('CATCH_ERROR', error));
   }
 }
 

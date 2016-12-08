@@ -13,7 +13,12 @@ import Navbar from './components/Navbar'
 import FooterVue from './components/FooterVue'
 
 export default {
-  components: { Navbar, FooterVue }
+  components: { Navbar, FooterVue },
+  created() {
+    this.$store.dispatch('getGenres', {
+      params:  { type: 'genre', category: 'movie', list: 'list', api_key:  this.$store.state.commonService.apiKey },
+      headers: this.$store.state.commonService.headers });
+  },
 }
 </script>
 

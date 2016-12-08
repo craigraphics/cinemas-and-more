@@ -21,15 +21,20 @@ export default {
   methods: {
     init() {
       let vm = this;
-      vm.$store.dispatch('getMovies',  { params: {
-        type: 'movie',
-        category: this.getCategory(this.$route.params.cat).cat,
-        api_key: this.$store.state.commonService.apiKey,
-        language: this.$route.params.lang,
-        page: this.$route.params.pageNumber
-      }, headers: this.$store.state.commonService.headers })
-      .then(vm.getMovies)
-      .then(vm.setGenreNames)
+      let movieParams =  {
+        params: {
+          type: 'movie',
+          category: this.getCategory(this.$route.params.cat).cat,
+          api_key: this.$store.state.commonService.apiKey,
+          language: this.$route.params.lang,
+          page: this.$route.params.pageNumber
+        },
+        headers: this.$store.state.commonService.headers
+      };
+
+      vm.$store.dispatch('getMovies', movieParams)
+        .then(vm.getMovies)
+        .then(vm.setGenreNames);
     },
     setColumns(number) {
       this.column = number;
@@ -51,15 +56,22 @@ export default {
         tempArr.push(genre_name);
       });
 
-      vm.$nextTick(function () {
-        vm.genres = tempArr;
-      });
+      vm.genres = tempArr;
+      //vm.$nextTick(function () {});
     },
     getMovies() {
       let vm = this;
-      vm.movies = vm.$store.state.movies.body.results;
-      vm.pageTitle = this.getCategory(this.$route.params.cat).pageTitle || 'Movies:';
+      const moment =  require('moment');
+      let movies = vm.$store.state.movies.body.results;
+
+      vm.pageTitle = vm.getCategory(this.$route.params.cat).pageTitle || 'Movies:';
       vm.totalPages = vm.$store.state.movies.body.total_pages;
+
+      if (vm.pageTitle === 'Upcoming') {
+        vm.movies = movies.filter(film => moment(film.release_date).isAfter(moment(), 'day'));
+      } else {
+        vm.movies = vm.$store.state.movies.body.results;
+      }
 
       if (matchMedia('only screen and (max-width: 480px)').matches) {
         vm.path = vm.$store.state.images.secure_base_url + vm.$store.state.images.backdrop_sizes[0];
@@ -70,9 +82,6 @@ export default {
   },
   locales: require('../../i18n/Movielist.js'),
   created () {
-    this.$store.dispatch('getGenres', {
-      params:  { type: 'genre', category: 'movie', list: 'list', api_key:  this.$store.state.commonService.apiKey },
-      headers: this.$store.state.commonService.headers });
     this.init();
   },
   computed: {
