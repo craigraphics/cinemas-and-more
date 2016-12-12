@@ -7,6 +7,8 @@ Vue.use(Vuex)
 const state = {
   movies: {body: {results: ''}},
   genres: '',
+  movie: '',
+  credits: '',
   count: 0,
   page: 1,
   appTitle: 'Cinemas & More',
@@ -55,6 +57,12 @@ const mutations = {
   ADD_GENRES(state, genres) {
     state.genres = genres;
   },
+  ADD_SINGLE_MOVIE(state, movie) {
+    state.movie = movie;
+  },
+  ADD_CREDITS(state, credits) {
+    state.credits = credits;
+  },
   CATCH_ERROR(state, error) {
     state.error = error;
   }
@@ -64,6 +72,16 @@ const actions = {
   getMovies({ commit }, params) {
     return fethService.fetchWebService(state.commonService.api, params)
       .then((response) => commit('ADD_MOVIES', response))
+      .catch((error) => commit('CATCH_ERROR', error));
+  },
+  getSingleMovie({ commit }, params) {
+    return fethService.fetchWebService(state.commonService.api, params)
+      .then((response) => commit('ADD_SINGLE_MOVIE', response))
+      .catch((error) => commit('CATCH_ERROR', error));
+  },
+  getCredits({ commit }, params) {
+    return fethService.fetchWebService(state.commonService.api, params)
+      .then((response) => commit('ADD_CREDITS', response))
       .catch((error) => commit('CATCH_ERROR', error));
   },
   getGenres({ commit }, params) {
