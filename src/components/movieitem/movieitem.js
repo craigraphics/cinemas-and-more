@@ -18,21 +18,32 @@ export default {
     }
   },
   methods: {
-    getBack () {
+    getBack() {
       this.$router.go(window.history.back());
     },
     init() {
       let vm = this;
-      let params =  { params: {
+      let singleMovieParams =  { params: {
         type: 'movie',
         category: this.$route.params.movieId,
         language: this.$route.params.lang,
         api_key: this.$store.state.commonService.apiKey,
       }, headers: this.$store.state.commonService.headers };
+      let creditsParams = { params: {
+        type: 'movie',
+        category: this.$route.params.movieId,
+        list: 'credits',
+        language: this.$route.params.lang,
+        api_key: this.$store.state.commonService.apiKey,
+      }, headers: this.$store.state.commonService.headers }
 
-      vm.$store.dispatch('getSingleMovie', params)
+      vm.$store.dispatch('getSingleMovie', singleMovieParams)
         .then(vm.getMovieId)
-        .then(vm.getCredits);
+        .catch(vm.getError);
+
+      vm.$store.dispatch('getCredits', creditsParams)
+        .then(vm.getCredits)
+        .catch(vm.getError);
     },
     getMovieId() {
       let vm = this;
@@ -48,39 +59,22 @@ export default {
       } else {
         vm.backPath = String(vm.$store.state.images.secure_base_url) +  String(vm.$store.state.images.backdrop_sizes[2]);
       }
-      vm.scrollToTop(100);
 
+      vm.scrollToTop(100);
     },
     getCredits() {
       let vm = this;
-      let params = { params: {
-        type: 'movie',
-        category: this.$route.params.movieId,
-        list: 'credits',
-        language: this.$route.params.lang,
-        api_key: this.$store.state.commonService.apiKey,
-      }, headers: this.$store.state.commonService.headers }
+      vm.credits = vm.$store.state.credits.body;
+      vm.cast = vm.credits.cast;
 
-      vm.$store.dispatch('getCredits', params)
-        .then((response) => {
-          vm.credits = vm.$store.state.credits.body;
-          vm.cast = vm.credits.cast;
+      for (let value of vm.cast) {
+        vm.profilePaths.push(value.profile_path);
+      }
 
-          for (let value of vm.cast) {
-            vm.profilePaths.push(value.profile_path);
-          }
-
-          vm.credits.crew.filter((obj) => {
-             (obj.job === 'Director') ? vm.director = obj.name : 'N/A';
-             (obj.job === 'Producer') ? vm.producer = obj.name : 'N/A';
-          });
-
-        })
-        .catch(this.getError);
-
-    },
-    getError(err) {
-      console.log(err);
+      vm.credits.crew.filter((obj) => {
+         (obj.job === 'Director') ? vm.director = obj.name : 'N/A';
+         (obj.job === 'Producer') ? vm.producer = obj.name : 'N/A';
+      });
     }
   },
   mixins:[myMovieMixin],

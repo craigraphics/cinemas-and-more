@@ -34,7 +34,8 @@ export default {
 
       vm.$store.dispatch('getMovies', movieParams)
         .then(vm.getMovies)
-        .then(vm.setGenreNames);
+        .then(vm.setGenreNames)
+        .catch(vm.getError);
     },
     setColumns(number) {
       this.column = number;

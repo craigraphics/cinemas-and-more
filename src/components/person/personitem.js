@@ -1,4 +1,5 @@
-import knownMovies from './Knownmovies'
+import knownMovies from './Knownmovies';
+import myMovieMixin from '../../mixins/vue-mixins';
 
 export default {
   data () {
@@ -9,34 +10,28 @@ export default {
   },
   components: { knownMovies },
   methods: {
-    getBack () {
-      this.$router.go(window.history.back());
-    },
-    getPersonId () {
-      let personService =  this.$http.get(this.$store.state.commonService.api, { params: {
+    init() {
+      let vm = this;
+      let params =  { params: {
         type: 'person',
-        category: this.$route.params.personId,
-        language: this.$route.params.lang,
-        api_key: this.$store.state.commonService.apiKey,
-      }, headers: this.$store.state.commonService.headers });
+        category: vm.$route.params.personId,
+        language: vm.$route.params.lang,
+        api_key: vm.$store.state.commonService.apiKey,
+      }, headers: vm.$store.state.commonService.headers };
 
-      personService
-        .then((response) => {
-          this.actor = response.body;
-        })
-        .catch(this.getError)
-    },
-    getError(err) {
-      console.log(err);
+      vm.$store.dispatch('getPerson', params)
+        .then(() => vm.actor = vm.$store.state.person.body)
+        .catch(vm.getError);
     }
   },
+  mixins:[myMovieMixin],
   created () {
-    this.getPersonId();
+    this.init();
   },
   locales: require('../../i18n/Personitem.js'),
   watch: {
     '$route' (to, from) {
-      this.getPersonId();
+      this.init();
     }
   }
 }

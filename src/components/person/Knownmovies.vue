@@ -26,6 +26,7 @@
 </template>
 
 <script>
+  import myMovieMixin from '../../mixins/vue-mixins';
   export default {
     data () {
       return {
@@ -34,29 +35,27 @@
       }
     },
     methods: {
-      getKnownMovies() {
-        let personService =  this.$http.get(this.$store.state.commonService.api, { params: {
+      init() {
+        let vm = this;
+        let params =  { params: {
           type: 'person',
           category: this.$route.params.personId,
           list: 'movie_credits',
           language: this.$route.params.lang,
           api_key: this.$store.state.commonService.apiKey,
-        }, headers: this.$store.state.commonService.headers });
+        }, headers: this.$store.state.commonService.headers }
 
-        personService
-          .then((response) => this.movies = response.body.cast)
-          .catch(this.getError)
-      },
-      getError(err) {
-        console.log(err);
+        vm.$store.dispatch('getKnownMovies', params)
+          .then(() => vm.movies = vm.$store.state.knownMovies.body.cast)
+          .catch(vm.getError);
       }
     },
     created () {
-      this.getKnownMovies();
+      this.init();
     },
     watch: {
       '$route' (to, from) {
-        this.getKnownMovies();
+        this.init();
       }
     }
   }

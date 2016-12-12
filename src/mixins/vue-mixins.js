@@ -8,14 +8,17 @@ var myMovieMixin = {
           case 'movielists':
             this.$router.push({name: 'movielists', params: {cat: this.$route.params.cat, lang: lang, pageNumber: this.$route.params.pageNumber }});
             break;
-            case 'movie':
-              this.$router.push({name: 'movie', params: {movieId: this.$route.params.movieId,  lang: lang}});
-              break;
+          case 'movie':
+            this.$router.push({name: 'movie', params: {movieId: this.$route.params.movieId,  lang: lang}});
+            break;
         }
       },
       getCategory(category) {
         let filter = this.$store.state.cats.filter((obj) => obj.name == category);
         return filter[0];
+      },
+      getBack() {
+        this.$router.go(window.history.back());
       },
       scrollToTop(scrollDuration) {
           let scrollStep = -window.scrollY / (scrollDuration / 15),
@@ -26,6 +29,9 @@ var myMovieMixin = {
               else clearInterval(scrollInterval);
           }, 15);
       },
+      getError(err) {
+        console.log(err);
+      }
   }
 };
 
