@@ -20,7 +20,7 @@
                   class="media-object img-fluid"
                   v-bind:src="path + result.profile_path"
                   v-if="result.profile_path"
-                    v-bind:alt="result.name + ' picture'">
+                  v-bind:alt="result.name + ' picture'">
                 <img
                   class="card-img-top img-fluid"
                   v-if="!result.profile_path"
@@ -57,14 +57,10 @@
               </div>
             </router-link>
 
-
         </template>
       </div>
-
     </div>
-
   </div>
-
 </template>
 
 <script>
@@ -102,37 +98,41 @@
         (this.question.length /*&& this.results.length*/ ) ? isVisible = true : isVisible = false;
         return isVisible;
       },
+      manageResults() {
+        let vm = this;
+        let results = vm.$store.state.results.body.results;
+        vm.loading = false;
+        vm.noResults = false;
+
+        vm.results = _.filter(results, function(result, index) {
+          if(result.media_type === 'movie' || result.media_type === 'person') {
+            return result;
+          }
+        });
+
+        if (!vm.results.length) {
+          vm.loading = false;
+          vm.noResults = true;
+        }
+      },
       getAnswer: _.debounce(function() {
           let vm = this;
           vm.results = 'Searching...';
           vm.noResults = false;
-
-          if (vm.question.length) {
-            this.$http.get(this.$store.state.commonService.api, {
-              before(){ vm.loading = true; },
+          let params = {
+            before() {
+              vm.loading = true;
+            },
               params: {
               type: 'search',
               category: 'multi',
               query: vm.question,
               api_key: this.$store.state.commonService.apiKey,
-            }, headers: this.$store.state.commonService.headers } )
-              .then((response)=> {
-                let results = response.body.results;
-                vm.loading = false;
-                vm.noResults = false;
+            }, headers: this.$store.state.commonService.headers };
 
-                vm.results = _.filter(results, function(result, index) {
-                  if( result.media_type === 'movie' || result.media_type === 'person') {
-                    return result;
-                  }
-                });
-
-                if (!vm.results.length) {
-                  vm.loading = false;
-                  vm.noResults = true;
-                }
-
-              })
+          if (vm.question.length) {
+            vm.$store.dispatch('getResults', params)
+              .then(vm.manageResults)
               .catch((error) => vm.results = 'Error! Could not reach the API. ' + error);
           }
         },

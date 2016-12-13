@@ -11,6 +11,7 @@ const state = {
   credits: '',
   person: '',
   knownMovies: '',
+  results: '',
   count: 0,
   page: 1,
   appTitle: 'Cinemas & More',
@@ -71,6 +72,9 @@ const mutations = {
   ADD_KNOWN_MOVIES(state, knownMovies) {
     state.knownMovies = knownMovies;
   },
+  ADD_RESULTS(state, results) {
+    state.results = results;
+  },
   CATCH_ERROR(state, error) {
     state.error = error;
   }
@@ -105,6 +109,11 @@ const actions = {
   getKnownMovies({ commit }, params) {
     return fethService.fetchWebService(state.commonService.api, params)
       .then((response) => commit('ADD_KNOWN_MOVIES', response))
+      .catch((error) => commit('CATCH_ERROR', error));
+  },
+  getResults({ commit }, params) {
+    return fethService.fetchWebService(state.commonService.api, params)
+      .then((response) => commit('ADD_RESULTS', response))
       .catch((error) => commit('CATCH_ERROR', error));
   }
 }
